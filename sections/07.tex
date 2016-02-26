@@ -16,19 +16,20 @@ $$\theta'[k] = \theta[k] - \theta^R$$
 Then, equation \ref{eq:7.1} becomes
 $$\theta'[k+1] = \theta'[k](1 - \dfrac{T_s R}{L} K_{\Psi}^R)$$
 
-In order for this system to be stable, that is, $\theta \rightarrow \theta^R$,
-the solution of the equation inside the parentheses should lie inside the unit
-circle:
+In order for this system to be stable, that is, $| \theta - \theta^R | \rightarrow 0$
+as $k \rightarrow \infty$, the solution of the equation inside the parentheses
+should lie inside the unit circle:
 
 \begin{align}
   \Big|1 - &\dfrac{T_s R}{L} K_{\Psi}^R\Big| < 1 \nonumber \\
   -1 < 1 - &\dfrac{T_s R}{L} K_{\Psi}^R < 1 \nonumber \\
   -2 < - &\dfrac{T_s R}{L} K_{\Psi}^R < 0 \nonumber \\
-   0 < &\dfrac{T_s R}{L} K_{\Psi}^R < 2 \nonumber \\
-   0 < &K_{\Psi}^R < \dfrac{2L}{R T_s} \label{eq:7.2}
+   0 <\ &\dfrac{T_s R}{L} K_{\Psi}^R < 2 \nonumber \\
+   0 <\ &K_{\Psi}^R < \dfrac{2L}{R T_s} \label{eq:7.2}
 \end{align}
 
-Hence, the maximum value $K_{\Psi}^R$ can take is $K_{\Psi,max}^R = \dfrac{2L}{R T_s}$
+Hence, the maximum value $K_{\Psi}^R$ can take for the system to be marginally
+stable is $K_{\Psi,max}^R = \dfrac{2L}{R T_s}$
 
 Theoretically, the value of $K_{\Psi}^R$ can be chosen to be any value inside
 the interval defined in inequality \ref{eq:7.2}. However, first, it would be
@@ -38,4 +39,5 @@ time. Hence, in practice, it is reasonable that one would need to experiment
 with different values and choose one that results in balancing a small angular
 error, a minimal overshoot, if any, and a quick enough settling time.
 
-Eventually, the choice made for $K_{\Psi}^R$ was $K_{\Psi}^R = 0.5K_{\Psi,max}^R$.
+Eventually, the choice made for $K_{\Psi}^R$ was
+$K_{\Psi}^R = \frac{1}{2} K_{\Psi,max}^R$.

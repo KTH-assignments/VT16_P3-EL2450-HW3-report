@@ -1,8 +1,58 @@
+For the purpose of simulating this part of the controller, the initial point of
+the robot was taken to be $I (x_0, y_0) \equiv (0,0)$. The goal was set to
+$G (x_g, y_g) \equiv (-0.37, 1.68)$, which is node $1$ in the simulation
+environment. The angle between the line connecting $I$ and $G$ and the
+x-axis is hence $\theta_R = tan^{-1}(1.68 / -0.37) = 102.42$ degrees.
+
+Figures \ref{fig:8_0.1_max}, \ref{fig:8_0.2_max}, \ref{fig:8_0.5_max},
+\ref{fig:8_0.75_max}, \ref{fig:8_max} show the angular response of the robot
+for different values of $K_{\Psi}^R$ inside the interval set by inequality
+\ref{eq:7.2}. Figure \ref{fig:8_max_plus_one} verifies that the upper limit
+for $K_{\Psi}^R$ is indeed $K_{\Psi,max}^R = \frac{2L}{RT_s}$ by showing that the
+angular response of the robot cannot converge for $K_{\Psi}^R > K_{\Psi,max}^R$.
+
+Here, one can see that the smaller the value of $K_{\Psi}^R$ is, the larger the
+settling time, the lower the rise time and the smoother the response is. However,
+as the value of $K_{\Psi}^R$ increases, the steady-state response begins to
+oscillate, with the amplitude of this oscillation proportional to the value of
+$K_{\Psi}^R$.
+
+Figures \ref{fig:8_0.1_max_magnified}, \ref{fig:8_0.2_max_magnified},
+\ref{fig:8_0.5_max_magnified}, \ref{fig:8_0.75_max_magnified} and
+\ref{fig:8_0.1_max_magnified} focus on the steady-state value of the
+aforementioned responses. As it is evident, none of the responses converge to
+the value $\theta_R = 102.42$. This is reasonable since with only a purely
+proportional control signal, as the angular error, i.e. $e(\theta) = \theta^R - \theta$,
+tends to zero, the product of $K_{\Psi}^R$ and $e(\theta)$ isn't large enough
+to force the robot to rotate exactly $\theta^R$ degrees.
+
+Another way to look at this is by looking at the steady-state response of the
+system for a step input of magnitude $\theta^R$. Figure \ref{fig:8_block_diagram}
+shows the structure of the system. The z-transform of the input
+is then $R(z) = \dfrac{\theta^R}{1 - z^{-1}}$ and the equation of the closed-loop
+system is
+$$Y(z) = \dfrac{K_{\Psi}^R G(z)}{1 + K_{\Psi}^R G(z)} R(z)$$
+The steady-state response is
+$$lim_{t \to \infty} y(t) = lim_{z \to 1} (1-z^{-1}) \dfrac{\theta^R}{1-z^{-1}}
+\dfrac{K_{\Psi}^R G(z)}{1 + K_{\Psi}^R G(z)} = \theta^R \cdot lim_{z \to 1}
+\dfrac{K_{\Psi}^R G(z)}{1 + K_{\Psi}^R G(z)}$$
+
+The steady-state response cannot reach exactly $\theta^R$ as the above limit
+cannot converge to 1 under our limitations for $K_{\Psi}^R$ and the dynamics of
+$G(z)$.
+
+\begin{figure}\centering
+  \scalebox{0.9}{\input{./figures/task_8/block_diagram.tex}}
+  \caption{The structure of the system under rotational control.}
+  \label{fig:8_block_diagram}
+\end{figure}
+
+
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\linewidth}
   \begin{minipage}{0.45\linewidth}
     \begin{figure}[H]
-      \scalebox{0.7}{\input{./figures/task_8/3.tex}}
+      \scalebox{0.6}{\input{./figures/task_8/3.tex}}
       \caption{The orientation of the robot over time for
         $K_{\Psi}^R = 0.1 K_{\Psi, max}^R$}
       \label{fig:8_0.1_max}
@@ -11,7 +61,7 @@
   \hfill
   \begin{minipage}{0.45\linewidth}
     \begin{figure}[H]
-      \scalebox{0.7}{\input{./figures/task_8/3.magnified.tex}}
+      \scalebox{0.6}{\input{./figures/task_8/3.magnified.tex}}
       \caption{The steady state orientation of the robot for
         $K_{\Psi}^R = 0.1 K_{\Psi, max}^R$}
       \label{fig:8_0.1_max_magnified}
@@ -24,7 +74,7 @@
 \begin{minipage}{\linewidth}
   \begin{minipage}{0.45\linewidth}
     \begin{figure}[H]
-      \scalebox{0.7}{\input{./figures/task_8/2.tex}}
+      \scalebox{0.6}{\input{./figures/task_8/2.tex}}
       \caption{The orientation of the robot over time for
         $K_{\Psi}^R = 0.2 K_{\Psi, max}^R$}
       \label{fig:8_0.2_max}
@@ -33,7 +83,7 @@
   \hfill
   \begin{minipage}{0.45\linewidth}
     \begin{figure}[H]
-      \scalebox{0.7}{\input{./figures/task_8/2.magnified.tex}}
+      \scalebox{0.6}{\input{./figures/task_8/2.magnified.tex}}
       \caption{The steady state orientation of the robot for
         $K_{\Psi}^R = 0.2 K_{\Psi, max}^R$}
       \label{fig:8_0.2_max_magnified}
@@ -46,7 +96,7 @@
 \begin{minipage}{\linewidth}
   \begin{minipage}{0.45\linewidth}
     \begin{figure}[H]
-      \scalebox{0.7}{\input{./figures/task_8/1.tex}}
+      \scalebox{0.6}{\input{./figures/task_8/1.tex}}
       \caption{The orientation of the robot over time for
         $K_{\Psi}^R = 0.5 K_{\Psi, max}^R$}
       \label{fig:8_0.5_max}
@@ -55,7 +105,7 @@
   \hfill
   \begin{minipage}{0.45\linewidth}
     \begin{figure}[H]
-      \scalebox{0.7}{\input{./figures/task_8/1.magnified.tex}}
+      \scalebox{0.6}{\input{./figures/task_8/1.magnified.tex}}
       \caption{The steady state orientation of the robot for
         $K_{\Psi}^R = 0.5 K_{\Psi, max}^R$}
       \label{fig:8_0.5_max_magnified}
@@ -68,7 +118,7 @@
 \begin{minipage}{\linewidth}
   \begin{minipage}{0.45\linewidth}
     \begin{figure}[H]
-      \scalebox{0.7}{\input{./figures/task_8/4.tex}}
+      \scalebox{0.6}{\input{./figures/task_8/4.tex}}
       \caption{The orientation of the robot over time for
         $K_{\Psi}^R = 0.75 K_{\Psi, max}^R$}
       \label{fig:8_0.75_max}
@@ -77,7 +127,7 @@
   \hfill
   \begin{minipage}{0.45\linewidth}
     \begin{figure}[H]
-      \scalebox{0.7}{\input{./figures/task_8/4.magnified.tex}}
+      \scalebox{0.6}{\input{./figures/task_8/4.magnified.tex}}
       \caption{The steady state orientation of the robot for
         $K_{\Psi}^R = 0.75 K_{\Psi, max}^R$}
       \label{fig:8_0.75_max_magnified}
@@ -90,7 +140,7 @@
 \begin{minipage}{\linewidth}
   \begin{minipage}{0.45\linewidth}
     \begin{figure}[H]
-      \scalebox{0.7}{\input{./figures/task_8/5.tex}}
+      \scalebox{0.6}{\input{./figures/task_8/5.tex}}
       \caption{The orientation of the robot over time for
         $K_{\Psi}^R = K_{\Psi, max}^R$. This is the upper limit value of $K_{\Psi}^R$
           before the system becomes unstable}
@@ -100,7 +150,7 @@
   \hfill
   \begin{minipage}{0.45\linewidth}
     \begin{figure}[H]
-      \scalebox{0.7}{\input{./figures/task_8/5.magnified.tex}}
+      \scalebox{0.6}{\input{./figures/task_8/5.magnified.tex}}
       \caption{The steady state orientation of the robot for
         $K_{\Psi}^R = K_{\Psi, max}^R$}
       \label{fig:8_max_magnified}
@@ -113,7 +163,7 @@
 \begin{minipage}{\linewidth}
   \begin{minipage}{0.45\linewidth}
     \begin{figure}[H]
-      \scalebox{0.7}{\input{./figures/task_8/6.tex}}
+      \scalebox{0.6}{\input{./figures/task_8/6.tex}}
       \caption{The orientation of the robot over time for
         $K_{\Psi}^R = K_{\Psi, max}^R + 1$. The system is indeed unstable}
       \label{fig:8_max_plus_one}
