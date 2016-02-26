@@ -4,24 +4,16 @@
 
 \usepackage[left=1.0in, right=1.0in, top=1.0in, bottom=1.0in]{geometry}
 
-\ifx\pdfoutput\undefined
-    %Use old Latex if PDFLatex does not work
-   \usepackage[dvips]{graphicx}% To get graphics working
-   \DeclareGraphicsExtensions{.eps} % Encapsulated PostScript
- \else
-    %Use PDFLatex
-   \usepackage[pdftex]{graphicx}% To get graphics working
-   \DeclareGraphicsExtensions{.pdf,.jpg,.png,.mps} % Portable Document Format, Joint Photographic Experts Group, Portable Network Graphics, MetaPost
-   \pdfcompresslevel=9
-\fi
-
 \usepackage{amsmath,amssymb}   % Contains mathematical symbols
 \usepackage[ansinew]{inputenc} % Input encoding, identical to Windows 1252
 \usepackage[english]{babel}    % Language
 \usepackage[square,numbers]{natbib}     %Nice numbered citations
 \bibliographystyle{plainnat}            %Sorted bibliography
-
-
+\usepackage{float}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{lscape}
+\usepackage{graphicx}
 
 \begin{document}               % Begins the document
 
@@ -117,7 +109,7 @@ Here are some examples how to use Latex:
 %\input{./sections/07.tex}
 
 \section*{Task 8}
-%\input{./sections/08.tex}
+\input{./sections/08.tex}
 
 \section*{Task 9}
 %\input{./sections/09.tex}
