@@ -1,0 +1,29 @@
+\begin{align*}
+  \theta[k+1] &= \theta[k] + \dfrac{T_s R}{L} u_{\Psi}[k]  \\
+            ~ &= \theta[k] + \dfrac{T_s R}{L} K_{\Psi}^R (\theta^R - \theta[k]) \\
+            ~ &= \theta[k](1 - \dfrac{T_s R}{L} K_{\Psi}^R) + \dfrac{T_s R}{L} K_{\Psi}^R \theta^R  \\
+\end{align*}
+
+By subtracting $\theta^R$ from both sides one gets
+
+\begin{align}
+  \theta[k+1] - \theta^R &= \theta[k](1 - \dfrac{T_s R}{L} K_{\Psi}^R) + (\dfrac{T_s R}{L} K_{\Psi}^R - 1) \theta^R \nonumber \\
+                     ~ &= (\theta[k] - \theta^R)(1 - \dfrac{T_s R}{L} K_{\Psi}^R) \label{eq:7.1}
+\end{align}
+
+We now define state $\theta'$ as $$\theta'[k] = \theta[k] - \theta^R$$. Then,
+equation \ref{eq:7.1} becomes $$\theta'[k+1] = \theta'[k](1 - \dfrac{T_s R}{L} K_{\Psi}^R)$$
+
+In order for this system to be stable, that is, $\theta \rightarrow \theta^R$,
+the solution of the equation inside the parentheses should lie inside the unit
+circle:
+
+\begin{align*}
+  \Big|1 - &\dfrac{T_s R}{L} K_{\Psi}^R\Big| < 1 \\
+  -1 < 1 - &\dfrac{T_s R}{L} K_{\Psi}^R < 1 \\
+  -2 < - &\dfrac{T_s R}{L} K_{\Psi}^R < 0 \\
+   0 < &\dfrac{T_s R}{L} K_{\Psi}^R < 2 \\
+   0 < &K_{\Psi}^R < \dfrac{2L}{R T_s} \\
+\end{align*}
+
+Hence, the maximum value $K_{\Psi}^R$ can take is $K_{\Psi,max}^R = \dfrac{2L}{R T_s}$
