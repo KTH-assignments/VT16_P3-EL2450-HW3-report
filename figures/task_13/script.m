@@ -1,4 +1,4 @@
-p = dlmread('4.csv', ';', 1, 0);
+p = dlmread('66.csv', ';', 1, 0);
 
 nz = find(p(:,2));
 

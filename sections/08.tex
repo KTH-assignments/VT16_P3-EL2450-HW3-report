@@ -27,10 +27,10 @@ tends to zero, the product of $K_{\Psi}^R$ and $e(\theta)$ isn't large enough
 to force the robot to rotate exactly $\theta^R$ degrees.
 
 Another way to look at this is by looking at the steady-state response of the
-system for a step input of magnitude $\theta^R$. Figure \ref{fig:8_block_diagram}
-shows the structure of the system. The z-transform of the input
-is then $R(z) = \dfrac{\theta^R}{1 - z^{-1}}$ and the equation of the closed-loop
-system is
+system, which is linear, for a step input of magnitude $\theta^R$. Figure
+\ref{fig:8_block_diagram} shows the structure of the system. The z-transform of
+the input is then $R(z) = \dfrac{\theta^R}{1 - z^{-1}}$ and the equation of the
+closed-loop system is
 $$Y(z) = \dfrac{K_{\Psi}^R G(z)}{1 + K_{\Psi}^R G(z)} R(z)$$
 The steady-state response is
 $$lim_{t \to \infty} y(t) = lim_{z \to 1} (1-z^{-1}) \dfrac{\theta^R}{1-z^{-1}}
@@ -43,7 +43,9 @@ $G(z)$.
 
 \begin{figure}\centering
   \scalebox{0.9}{\input{./figures/task_8/block_diagram.tex}}
-  \caption{The structure of the system under rotational control.}
+  \caption{The structure of the system under rotational control. $G(z)$ is the
+    discretized transfer function of the linear system whose state-space
+    equation is $\dot{\theta} = \frac{R}{L} u_{\Psi}$}
   \label{fig:8_block_diagram}
 \end{figure}
 

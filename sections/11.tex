@@ -1,0 +1,131 @@
+Figures \ref{fig:11_0.1_max}, \ref{fig:11_0.2_max}, \ref{fig:11_0.5_max},
+\ref{fig:11_0.75_max}, \ref{fig:11_max} show the bearing error of the robot
+for different values of $K_{\Psi}^R$ inside the interval set by inequality
+\ref{eq:7.2}. Figures \ref{fig:11_0.1_max_magnified},
+\ref{fig:11_0.2_max_magnified}, \ref{fig:11_0.5_max_magnified},
+\ref{fig:11_0.75_max_magnified} and \ref{fig:11_0.1_max_magnified} focus on the
+steady-state bearing error of the aforementioned figures.
+
+The evolution of the bearing and distance error is the same when both of the
+rotational controllers are enabled compared to when only one of them is enabled.
+This happens because the behaviour of each controller does not affect the
+behaviour of the other, since this is an ideal system. In reality, we expect
+that the distance error will be non-zero.
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_11/error_theta_3.tex}}
+      \caption{The error in orientation of the robot over time for
+        $K_{\Psi}^R = 0.1 K_{\Psi, max}^R$}
+      \label{fig:11_0.1_max}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_11/error_theta_3.magnified.tex}}
+      \caption{The steady state error in orientation of the robot for
+        $K_{\Psi}^R = 0.1 K_{\Psi, max}^R$}
+      \label{fig:11_0.1_max_magnified}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_11/error_theta_2.tex}}
+      \caption{The error in orientation of the robot over time for
+        $K_{\Psi}^R = 0.2 K_{\Psi, max}^R$}
+      \label{fig:11_0.2_max}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_11/error_theta_2.magnified.tex}}
+      \caption{The steady state error in orientation of the robot for
+        $K_{\Psi}^R = 0.2 K_{\Psi, max}^R$}
+      \label{fig:11_0.2_max_magnified}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_11/error_theta_1.tex}}
+      \caption{The error in orientation of the robot over time for
+        $K_{\Psi}^R = 0.5 K_{\Psi, max}^R$}
+      \label{fig:11_0.5_max}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_11/error_theta_1.magnified.tex}}
+      \caption{The steady state error in orientation of the robot for
+        $K_{\Psi}^R = 0.5 K_{\Psi, max}^R$}
+      \label{fig:11_0.5_max_magnified}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_11/error_theta_4.tex}}
+      \caption{The error in orientation of the robot over time for
+        $K_{\Psi}^R = 0.75 K_{\Psi, max}^R$}
+      \label{fig:11_0.75_max}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_11/error_theta_4.magnified.tex}}
+      \caption{The steady state error in orientation of the robot for
+        $K_{\Psi}^R = 0.75 K_{\Psi, max}^R$}
+      \label{fig:11_0.75_max_magnified}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_11/error_theta_5.tex}}
+      \caption{The error in orientation of the robot over time for
+        $K_{\Psi}^R = K_{\Psi, max}^R$.}
+      \label{fig:11_max}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_11/error_theta_5.magnified.tex}}
+      \caption{The steady state error in orientation of the robot for
+        $K_{\Psi}^R = K_{\Psi, max}^R$}
+      \label{fig:11_max_magnified}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+
+\begin{figure}[H]\centering
+  \scalebox{0.6}{\input{./figures/task_11/error_d0.tex}}
+  \caption{The distance of the robot from its origin position over time for
+    $K_{\omega}^R = 0.5 K_{\omega, max}^R$}
+  \label{fig:11_d0}
+\end{figure}

@@ -1,0 +1,153 @@
+For the purpose of simulating this part of the controller, the initial point of
+the robot was taken to be $I(x_0, y_0) \equiv (0, 0)$. The goal was set to
+$G(x_g, y_g) \equiv (1.0, 0.0)$.
+
+Figures \ref{fig:13_0.1_max}, \ref{fig:13_0.2_max}, \ref{fig:13_0.5_max},
+\ref{fig:13_0.75_max} and \ref{fig:13_max} show the displacemental response of
+the robot for various values of $K_{\omega}^T$ inside the interval set by
+inequality \ref{eq:12.2}. Figure \ref{fig:13_max_plus_one} verifies that the
+upper limit for $K_{\omega}^T$ is indeed $\frac{2}{T_s R}$ by showing that the
+displacemental response of the robot cannot converge for
+$K_{\omega}^T > K_{\omega,max}^T$.
+
+Here, one can see that the smaller the value of $K_{\omega}^T$ is, the larger
+the settling time, the lower the rise time and the smoother the response is.
+However, as the value of $K_{\omega}^T$ increases, the steady-state response
+begins to oscillate, with the amplitude of this oscillation proportional to the
+value of $K_{\omega}^T$.
+
+Figures \ref{fig:13_0.1_max_magnified}, \ref{fig:13_0.2_max_magnified},
+\ref{fig:13_0.5_max_magnified}, \ref{fig:13_0.75_max_magnified} and
+\ref{fig:13_max_magnified} focus on the steady-state value of the aforementioned
+responses. In contrast to the proportional rotational controller, the robot
+\textit{can} arrive to its reference signal. The equations that govern the
+robot's translational movement are non-linear, as opposed to the one that
+governs its rotational movement, which in turn means that the translational
+system's behaviour is not bounded within the laws that govern control with
+proportional controllers on linear systems.
+
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_13/1.tex}}
+      \caption{The orientation of the robot over time for
+        $K_{\omega}^T = 0.1 K_{\omega, max}^T$}
+      \label{fig:13_0.1_max}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_13/1.magnified.tex}}
+      \caption{The steady state orientation of the robot for
+        $K_{\omega}^T = 0.1 K_{\omega, max}^T$}
+      \label{fig:13_0.1_max_magnified}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_13/2.tex}}
+      \caption{The orientation of the robot over time for
+        $K_{\omega}^T = 0.2 K_{\omega, max}^T$}
+      \label{fig:13_0.2_max}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_13/2.magnified.tex}}
+      \caption{The steady state orientation of the robot for
+        $K_{\omega}^T = 0.2 K_{\omega, max}^T$}
+      \label{fig:13_0.2_max_magnified}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_13/3.tex}}
+      \caption{The orientation of the robot over time for
+        $K_{\omega}^T = 0.5 K_{\omega, max}^T$}
+      \label{fig:13_0.5_max}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_13/3.magnified.tex}}
+      \caption{The steady state orientation of the robot for
+        $K_{\omega}^T = 0.5 K_{\omega, max}^T$}
+      \label{fig:13_0.5_max_magnified}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_13/4.tex}}
+      \caption{The orientation of the robot over time for
+        $K_{\omega}^T = 0.75 K_{\omega, max}^T$}
+      \label{fig:13_0.75_max}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_13/4.magnified.tex}}
+      \caption{The steady state orientation of the robot for
+        $K_{\omega}^T = 0.75 K_{\omega, max}^T$}
+      \label{fig:13_0.75_max_magnified}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_13/5.tex}}
+      \caption{The orientation of the robot over time for
+        $K_{\omega}^T = K_{\omega, max}^T$.}
+      \label{fig:13_max}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_13/5.magnified.tex}}
+      \caption{The steady state orientation of the robot for
+        $K_{\omega}^T = K_{\omega, max}^T$}
+      \label{fig:13_max_magnified}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_13/6.tex}}
+      \caption{The orientation of the robot over time for
+        $K_{\omega}^T = K_{\omega, max}^T + 1$. The system is marginally stable}
+      \label{fig:13_max_plus_one}
+    \end{figure}
+  \end{minipage}
+  \hfill
+\end{minipage}
+}
+

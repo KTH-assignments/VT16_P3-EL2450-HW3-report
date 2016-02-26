@@ -1,5 +1,5 @@
 \begin{align*}
-  \theta[k+1] &= \theta[k] + \dfrac{T_s R}{L} u_{\Psi}[k]  \\
+  \theta[k+1] &= \theta[k] + \dfrac{T_s R}{L} u_{\Psi}^R[k]  \\
             ~ &= \theta[k] + \dfrac{T_s R}{L} K_{\Psi}^R (\theta^R - \theta[k]) \\
             ~ &= \theta[k](1 - \dfrac{T_s R}{L} K_{\Psi}^R) + \dfrac{T_s R}{L} K_{\Psi}^R \theta^R  \\
 \end{align*}
@@ -25,11 +25,11 @@ should lie inside the unit circle:
   -1 < 1 - &\dfrac{T_s R}{L} K_{\Psi}^R < 1 \nonumber \\
   -2 < - &\dfrac{T_s R}{L} K_{\Psi}^R < 0 \nonumber \\
    0 <\ &\dfrac{T_s R}{L} K_{\Psi}^R < 2 \nonumber \\
-   0 <\ &K_{\Psi}^R < \dfrac{2L}{R T_s} \label{eq:7.2}
+   0 <\ &K_{\Psi}^R < \dfrac{2L}{T_s R} \label{eq:7.2}
 \end{align}
 
 Hence, the maximum value $K_{\Psi}^R$ can take for the system to be marginally
-stable is $K_{\Psi,max}^R = \dfrac{2L}{R T_s}$
+stable is $K_{\Psi,max}^R = \dfrac{2L}{T_s R}$
 
 Theoretically, the value of $K_{\Psi}^R$ can be chosen to be any value inside
 the interval defined in inequality \ref{eq:7.2}. However, first, it would be

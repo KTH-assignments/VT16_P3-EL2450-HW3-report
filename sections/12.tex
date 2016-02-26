@@ -1,0 +1,39 @@
+\begin{align*}
+  d_g[k] &= cos(\theta_g) (x_g - x[k]) + sin(\theta_g) (y_g - y[k]) \\
+         &= cos(\theta_g) (x_g - x[k-1] - T_s R u_{\omega}^T[k-1] cos(\theta_g)) \\
+         &+ sin(\theta_g) (y_g - y[k-1] - T_s R u_{\omega}^T[k-1] sin(\theta_g)) \\
+         &= cos(\theta_g) (x_g - x[k]) + sin(\theta_g) (y_g - y[k]) -T_s R K_{\omega}^T d_g[k]  \\
+         &= (1-T_s R K_{\omega}^T)d_g[k-1]
+\end{align*}
+
+Hence
+
+\begin{align*}
+  d_g[k+1]= (1-T_s R K_{\omega}^T)d_g[k]
+\end{align*}
+
+In order for this system to be stable, that is, $d_g \to 0$ as $k \to \infty$,
+the solution of the equation inside the parentheses should lie inside the unit
+circle:
+
+\begin{align}
+  \Big|1 - &T_s R K_{\omega}^T\Big| < 1 \nonumber \\
+  -1 < 1 - &T_s R K_{\omega}^T < 1 \nonumber \\
+  -2 < - &T_s R K_{\omega}^T < 0 \nonumber \\
+   0 <\ &T_s R K_{\omega}^T < 2 \nonumber \\
+   0 <\ &K_{\omega}^T < \dfrac{2}{T_s R} \label{eq:12.2}
+\end{align}
+
+Hence, the maximum value $K_{\omega}^T$ can take for the system to be marginally
+stable is $K_{\omega,max}^T = \dfrac{2}{T_s R}$
+
+Theoretically, the value of $K_{\omega}^T$ can be chosen to be any value inside
+the interval defined in inequality \ref{eq:12.2}. However, first, it would be
+wise to choose a value that is far enough from the maximum value so as to avoid
+overshoot, but close enough to it, so that convergence happens in reasonable
+time. Hence, in practice, it is reasonable that one would need to experiment
+with different values and choose one that results in balancing a small angular
+error, a minimal overshoot, if any, and a quick enough settling time.
+
+Eventually, the choice made for $K_{\omega}^T$ was
+$K_{\omega}^T = \frac{1}{2} K_{\omega,max}^T$.

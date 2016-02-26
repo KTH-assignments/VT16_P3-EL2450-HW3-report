@@ -1,4 +1,6 @@
-1   r_K_psi_max / 2
-2   r_K_psi_max / 5
-3   r_K_psi_max / 10
+1   r_K_psi_max * 0.1
+2   r_K_psi_max * 0.2
+3   r_K_psi_max * 0.5
 4   r_K_psi_max * 0.75
+5   r_K_psi_max
+6   r_K_psi_max + 1
