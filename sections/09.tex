@@ -1,0 +1,41 @@
+\begin{align*}
+  d_0[k] &= cos(\theta[k]) (x_0 - x[k]) + sin(\theta[k]) (y_0 - y[k]) \\
+         &= cos(\theta[k]) (x_0 - x[k-1] - R u_{\omega}^R[k-1] cos(\theta[k-1])) \\
+         &+ sin(\theta[k]) (y_0 - y[k-1] - R u_{\omega}^R[k-1] sin(\theta[k-1])) \\
+         &= cos(\theta^R) (x_0 - x[k-1] - R u_{\omega}^R[k-1] cos(\theta^R)) \\
+         &+ sin(\theta^R) (y_0 - y[k-1] - R u_{\omega}^R[k-1] sin(\theta^R)) \\
+         &= cos(\theta^R) (x_0 - x[k-1]) + sin(\theta^R) (y_0 - y[k-1]) -R K_{\omega}^T d_0[k-1]  \\
+         &= (1-R K_{\omega}^R)d_0[k-1]
+\end{align*}
+
+Hence
+
+\begin{align*}
+  d_0[k+1]= (1-R K_{\omega}^R)d_0[k]
+\end{align*}
+
+In order for this system to be stable, that is, $d_0 \to 0$ as $k \to \infty$,
+the solution of the equation inside the parentheses should lie inside the unit
+circle:
+
+\begin{align}
+  \Big|1 - &R K_{\omega}^R\Big| < 1 \nonumber \\
+  -1 < 1 - &R K_{\omega}^R < 1 \nonumber \\
+  -2 < - &R K_{\omega}^R < 0 \nonumber \\
+   0 <\ &R K_{\omega}^R < 2 \nonumber \\
+   0 <\ &K_{\omega}^R < \dfrac{2}{R} \label{eq:09.2}
+\end{align}
+
+Hence, the maximum value $K_{\omega}^R$ can take for the system to be marginally
+stable is $K_{\omega,max}^R = \dfrac{2}{R}$.
+
+Theoretically, the value of $K_{\omega}^R$ can be chosen to be any value inside
+the interval defined in inequality \ref{eq:09.2}. However, first, it would be
+wise to choose a value that is far enough from the maximum value so as to avoid
+overshoot, but close enough to it, so that convergence happens in reasonable
+time. Hence, in practice, it is reasonable that one would need to experiment
+with different values and choose one that results in balancing a small angular
+error, a minimal overshoot, if any, and a quick enough settling time.
+
+Eventually, the choice made for $K_{\omega}^R$ was
+$K_{\omega}^R = \frac{1}{2} K_{\omega,max}^R$.
