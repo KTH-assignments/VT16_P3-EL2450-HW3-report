@@ -1,0 +1,109 @@
+Figures \ref{fig:17_0.1_max}, \ref{fig:17_0.2_max}, \ref{fig:17_0.5_max},
+\ref{fig:17_0.75_max} and show the displacemental error of the
+robot for different values of $K_{\omega}^T$ inside the interval set by
+inequality \ref{eq:14.2}. Figures \ref{fig:17_0.1_max_magnified},
+\ref{fig:17_0.2_max_magnified}, \ref{fig:17_0.5_max_magnified} and
+\ref{fig:17_0.75_max_magnified} focus on the steady-state displacemental error.
+Figure \ref{fig:17_error_dp} illustrates the $d_0[k]$ error, which is at all
+times zero.
+
+The evolution of the bearing and displacement error is the same when both of the
+translational controllers are enabled compared to when only one of them is
+enabled. This happens because the behaviour of each controller does not affect
+the behaviour of the other, since this is an ideal system. In reality, we expect
+that the angular error will be non-zero.
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_17/1.tex}}
+      \caption{The error in displacement of the robot over time for
+        $K_{\omega}^T = 0.1 K_{\omega, max}^T$}
+      \label{fig:17_0.1_max}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_17/1.magnified.tex}}
+      \caption{The steady state error in displacement of the robot for
+        $K_{\omega}^T = 0.1 K_{\omega, max}^T$}
+      \label{fig:17_0.1_max_magnified}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_17/2.tex}}
+      \caption{The error in displacement of the robot over time for
+        $K_{\omega}^T = 0.2 K_{\omega, max}^T$}
+      \label{fig:17_0.2_max}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_17/2.magnified.tex}}
+      \caption{The steady state error in displacement of the robot for
+        $K_{\omega}^T = 0.2 K_{\omega, max}^T$}
+      \label{fig:17_0.2_max_magnified}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_17/3.tex}}
+      \caption{The error in displacement of the robot over time for
+        $K_{\omega}^T = 0.5 K_{\omega, max}^T$}
+      \label{fig:17_0.5_max}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_17/3.magnified.tex}}
+      \caption{The steady state error in displacement of the robot for
+        $K_{\omega}^T = 0.5 K_{\omega, max}^T$}
+      \label{fig:17_0.5_max_magnified}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_17/4.tex}}
+      \caption{The error in displacement of the robot over time for
+        $K_{\omega}^T = 0.75 K_{\omega, max}^T$}
+      \label{fig:17_0.75_max}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_17/4.magnified.tex}}
+      \caption{The steady state error in displacement of the robot for
+        $K_{\omega}^T = 0.75 K_{\omega, max}^T$}
+      \label{fig:17_0.75_max_magnified}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\begin{figure}[H]
+  \scalebox{0.6}{\input{./figures/task_17/error_dp.tex}}
+  \caption{The steady state error in orientation of the robot for all legitimate
+    values of $K_{\omega}^T$}
+  \label{fig:17_error_dp}
+\end{figure}
