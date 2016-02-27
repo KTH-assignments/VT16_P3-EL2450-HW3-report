@@ -1,35 +1,35 @@
 \begin{align*}
-  \theta[k+1] &= \theta[k] + \dfrac{R}{L} u_{\Psi}^R[k]  \\
-            ~ &= \theta[k] + \dfrac{R}{L} K_{\Psi}^R (\theta^R - \theta[k]) \\
-            ~ &= \theta[k](1 - \dfrac{R}{L} K_{\Psi}^R) + \dfrac{R}{L} K_{\Psi}^R \theta^R  \\
+  \theta[k+1] &= \theta[k] + \dfrac{T_s R}{L} u_{\Psi}^R[k]  \\
+            ~ &= \theta[k] + \dfrac{T_s R}{L} K_{\Psi}^R (\theta^R - \theta[k]) \\
+            ~ &= \theta[k](1 - \dfrac{T_s R}{L} K_{\Psi}^R) + \dfrac{T_s R}{L} K_{\Psi}^R \theta^R  \\
 \end{align*}
 
 By subtracting $\theta^R$ from both sides one gets
 
 \begin{align}
-  \theta[k+1] - \theta^R &= \theta[k](1 - \dfrac{R}{L} K_{\Psi}^R) + (\dfrac{R}{L} K_{\Psi}^R - 1) \theta^R \nonumber \\
-                     ~ &= (\theta[k] - \theta^R)(1 - \dfrac{R}{L} K_{\Psi}^R) \label{eq:7.1}
+  \theta[k+1] - \theta^R &= \theta[k](1 - \dfrac{T_s R}{L} K_{\Psi}^R) + (\dfrac{T_s R}{L} K_{\Psi}^R - 1) \theta^R \nonumber \\
+                     ~ &= (\theta[k] - \theta^R)(1 - \dfrac{T_s R}{L} K_{\Psi}^R) \label{eq:7.1}
 \end{align}
 
 We now define state $\theta'$ as
 $$\theta'[k] = \theta[k] - \theta^R$$
 Then, equation \ref{eq:7.1} becomes
-$$\theta'[k+1] = \theta'[k](1 - \dfrac{R}{L} K_{\Psi}^R)$$
+$$\theta'[k+1] = \theta'[k](1 - \dfrac{T_s R}{L} K_{\Psi}^R)$$
 
 In order for this system to be stable, that is, $| \theta - \theta^R | \rightarrow 0$
 as $k \rightarrow \infty$, the solution of the equation inside the parentheses
 should lie inside the unit circle:
 
 \begin{align}
-  \Big|1 - &\dfrac{R}{L} K_{\Psi}^R\Big| < 1 \nonumber \\
-  -1 < 1 - &\dfrac{R}{L} K_{\Psi}^R < 1 \nonumber \\
-  -2 < - &\dfrac{R}{L} K_{\Psi}^R < 0 \nonumber \\
-   0 <\ &\dfrac{R}{L} K_{\Psi}^R < 2 \nonumber \\
-   0 <\ &K_{\Psi}^R < \dfrac{2L}{R} \label{eq:7.2}
+  \Big|1 - &\dfrac{T_s R}{L} K_{\Psi}^R\Big| < 1 \nonumber \\
+  -1 < 1 - &\dfrac{T_s R}{L} K_{\Psi}^R < 1 \nonumber \\
+  -2 < - &\dfrac{T_s R}{L} K_{\Psi}^R < 0 \nonumber \\
+   0 <\ &\dfrac{T_s R}{L} K_{\Psi}^R < 2 \nonumber \\
+   0 <\ &K_{\Psi}^R < \dfrac{2L}{T_s R} \label{eq:7.2}
 \end{align}
 
 Hence, the maximum value $K_{\Psi}^R$ can take for the system to be marginally
-stable is $K_{\Psi,max}^R = \dfrac{2L}{R}$
+stable is $K_{\Psi,max}^R = \dfrac{2L}{T_s R}$
 
 Theoretically, the value of $K_{\Psi}^R$ can be chosen to be any value inside
 the interval defined in inequality \ref{eq:7.2}. However, first, it would be
