@@ -1,0 +1,44 @@
+\begin{align}
+  d_p[k+1] &= p (\theta[k+1] - \theta_g) \label{eq:14.1}
+\end{align}
+
+But
+
+\begin{align*}
+  \theta[k+1] &= \theta[k] + T_s \dfrac{R}{L} u_{\Psi}^T[k]
+\end{align*}
+
+Hence equation \ref{eq:14.1} becomes
+
+\begin{align*}
+  d_p[k+1] &= p (\theta[k] + T_s \dfrac{R}{L} u_{\Psi}^T[k] - \theta_g) \\
+           &= p(\theta[k] + T_s \dfrac{R}{L} K_{\Psi}^T d_p[k] - \theta_g)  \\
+           &= p T_s \dfrac{R}{L} K_{\Psi}^T d_p[k] + p (\theta[k] - \theta_g) \\
+           &= p T_s \dfrac{R}{L} K_{\Psi}^T d_p[k] + d_p[k] \\
+           &= d_p[k] (1 + p T_s \dfrac{R}{L} K_{\Psi}^T d_p[k])
+\end{align*}
+
+In order for this system to be stable, that is, $d_p \to 0$ as $k \to \infty$,
+the solution of the equation inside the parentheses should lie inside the unit
+circle:
+
+\begin{align}
+  \Big|1 + &p T_s R K_{\omega}^T\Big| < 1 \nonumber \\
+  -1 < 1 + &p T_s R K_{\omega}^T < 1 \nonumber \\
+  -2 < &p T_s R K_{\omega}^T < 0 \nonumber \\
+  -\dfrac{2}{p T_s R} <\ &K_{\omega}^T < 0 \label{eq:14.2}
+\end{align}
+
+Hence, the maximum value $K_{\omega}^T$ can take for the system to be marginally
+stable is $K_{\omega,max}^T = 0$.
+
+Theoretically, the value of $K_{\omega}^T$ can be chosen to be any value inside
+the interval defined in inequality \ref{eq:09.2}. However, first, it would be
+wise to choose a value that is far enough from the maximum value so as to avoid
+overshoot, but close enough to it, so that convergence happens in reasonable
+time. Hence, in practice, it is reasonable that one would need to experiment
+with different values and choose one that results in balancing a small angular
+error, a minimal overshoot, if any, and a quick enough settling time.
+
+Eventually, the choice made for $K_{\omega}^T$ was
+$K_{\omega}^T = \frac{1}{2} K_{\omega,min}^T = -\frac{1}{p T_s R}$.
