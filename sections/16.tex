@@ -1,0 +1,12 @@
+This part of the controller is responsible for compensating for rotational
+errors during translation. Since the translational velocity $u_{\omega}$ is zero,
+it is expected that the robot will not rotate away from its original
+bearing. Figure \ref{fig:16_0.5_min} plots the robot's bearing with regard to
+its original bearing of $0$ degrees over time for $K_{\Psi}^T = 0.5 K_{\Psi, min}^T$.
+
+\begin{figure}[H]\centering
+  \scalebox{0.8}{\input{./figures/task_16/16.tex}}
+  \caption{The angular displacement of the robot from its original bearing over
+    time for $K_{\Psi}^T = 0.5 K_{\Psi, min}^T$}
+  \label{fig:16_0.5_min}
+\end{figure}
