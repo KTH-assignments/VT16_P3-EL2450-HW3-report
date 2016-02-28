@@ -1,0 +1,17 @@
+In order to reach a conclusion about the stability of the angular displacement,
+it suffices to find a Lyapunov function $V(x)$ such that $V(0) = 0$, $V(x) > 0$
+for all $x \neq 0$ and $\dot{V}(x) \leq 0$ for all x. Considering
+$x = \theta - \theta^G$ and $V(x) = x^2$:
+$$V(0) = 0,\ V(x) > 0,\ \text{for all } x \neq 0\text{, and}$$
+\begin{align*}
+  \dot{V}(x) &= 2 x \dot{x} = 2 (\theta - \theta^G) \dot{\theta}  \\
+             &= 2 (\theta - \theta^G) \dfrac{R}{L} u_{\Psi}
+\end{align*}
+
+\begin{itemize}
+  \item When $\theta - \theta^G \leq 0$, $\dot{V}(x) = 2 (\theta - \theta^G) \dfrac{R}{L} \leq 0$
+  \item When $\theta - \theta^G > 0$, $\dot{V}(x) = -2 (\theta - \theta^G) \dfrac{R}{L} < 0$
+\end{itemize}
+
+Hence $\dot{V}(x) \leq 0$ for all $x$, meaning that the system is stable for all
+$\theta \in (-180^{\circ}, 180^{\circ}]$.

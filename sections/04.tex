@@ -1,0 +1,63 @@
+Examining file \texttt{rot2.slx} one sees that $\dot{\theta} = R/L u_{\Psi}$ is
+stable. We can verify this analytically:
+
+\begin{align*}
+  \dot{u}_{\Psi} &= K_L (u_{\Psi}^R - u_{\Psi})  \\
+  \dot{u}_{\Psi} &= K_L u_{\Psi}^R - K_L u_{\Psi}  \\
+  \dot{u}_{\Psi} \cdot e^{K_L t} &= K_L u_{\Psi}^R \cdot e^{K_L t} - K_L u_{\Psi} \cdot e^{K_L t}  \\
+  \dot{u}_{\Psi} \cdot e^{K_L t} + K_L u_{\Psi} \cdot e^{K_L t} &= K_L u_{\Psi}^R \cdot e^{K_L t} \\
+  \dfrac{d}{dt}(u_{\Psi} e^{K_L t}) &= K_L u_{\Psi}^R e^{K_L t} \\
+  u_{\Psi} e^{K_L t} &= \int K_L u_{\Psi}^R e^{K_L t} = u_{\Psi}^R e^{K_L t} + \lambda \\
+  u_{\Psi} &= u_{\Psi}^R + \lambda e^{-K_L t}
+\end{align*}
+
+Hence
+\begin{equation}
+  u_{\Psi}(t) = \left\{
+    \begin{matrix}
+    1 + \lambda e^{-K_L t} & \theta - \theta^G \leq 0 \\
+    -1 + \lambda e^{-K_L t} & \theta - \theta^G > 0
+    \end{matrix}\right.
+\end{equation}
+
+where $u_{\Psi}(0) = u_{\Psi}^R(0) + \lambda \Leftrightarrow \lambda = u_{\Psi}(0) - u_{\Psi}^R(0)$.
+
+In order to reach a conclusion about the stability of the angular displacement,
+it suffices to find a Lyapunov function $V(x)$ such that $V(0) = 0$, $V(x) > 0$
+for all $x \neq 0$ and $\dot{V}(x) \leq 0$ for all x. Considering
+$x = \theta - \theta^G$ and $V(x) = x^2$:
+$$V(0) = 0,\ V(x) > 0,\ \text{for all } x \neq 0\text{, and}$$
+\begin{align*}
+  \dot{V}(x) &= 2 x \dot{x} = 2 (\theta - \theta^G) \dot{\theta}  \\
+             &= 2 (\theta - \theta^G) \dfrac{R}{L} u_{\Psi} \\
+             &= 2 (\theta - \theta^G) \dfrac{R}{L} (u_{\Psi}^R + \lambda e^{-K_L t})
+\end{align*}
+
+\begin{itemize}
+  \item When $\theta - \theta^G \leq 0$, $\dot{V}(x) = 2 (\theta - \theta^G) \dfrac{R}{L} (1 + \lambda e^{-K_L t}) \leq 0$ \\
+    With
+    \begin{align}
+      0 <&\ e^{-K_L t} \leq 1 \nonumber \\
+      0 <&\ \lambda e^{-K_L t} \leq \lambda \text{, for $\lambda > 0$} \nonumber \\
+      0 <&\ 1 < 1 + \lambda e^{-K_L t} \leq 1 + \lambda \text{, for $\lambda > 0$} \label{04.lambda_A}
+    \end{align}
+  \item When $\theta - \theta^G > 0$, $\dot{V}(x) = 2 (\theta - \theta^G) \dfrac{R}{L} (-1 + \lambda e^{-K_L t}) < 0$  \\
+    With
+    \begin{align}
+      0 <&\ e^{-K_L t} \leq 1 \nonumber \\
+      0 <&\ \lambda e^{-K_L t} \leq \lambda \text{, for $\lambda > 0$} \nonumber \\
+      -1 <&\ -1 + \lambda e^{-K_L t} \leq -1 + \lambda < 0 \text{, for $\lambda > 0$} \label{04.lambda_B}
+    \end{align}
+\end{itemize}
+
+From inequalities \ref{04.lambda_A} and \ref{04.lambda_B} one gets
+
+\begin{align*}
+  \lambda + 1 > 0 \\
+  \lambda - 1 < 0 \\
+  \lambda > 0
+\end{align*}
+
+Hence $\dot{V}(x) \leq 0$ for all $x$ when $\lambda \in (0,1)$, meaning that the
+system is stable for all $\theta \in (-180^{\circ}, 180^{\circ}]$ and
+$\lambda \in (0,1)$.
