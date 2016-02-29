@@ -1,0 +1,320 @@
+Evaluating the performance of the hybrid automaton primarily involves the
+evaluation of the steady-state errors regarding the position and angle of the
+robot with regard to the selected goal position. In order to obtain a broader
+understanging of how the four $K_{\*}$ gains influence the trajectory of the
+robot, twelve combinations were considered for the 4-tuple
+$$(K_{\Psi}^R, K_{\omega}^R, K_{\Psi}^T, K_{\omega}^T)$$
+where
+$$K_{\Psi}^R \in \{0.1,0.2,0.5\} \cdot K_{\Psi,max}^R$$
+$$K_{\omega}^T \in \{0.1,0.2,0.5,0.75\} \cdot K_{\omega,max}^T$$
+$$K_{\omega}^R = 0.5 K_{\omega,max}^R \text{, and } K_{\Psi}^T = 0.5 K_{\Psi,max}^T$$
+
+
+Figures \ref{fig:19_1_distance} - \ref{fig:19_12_distance} on the left-hand side
+illustrate the evolution of the distance of the robot in relation to its goal,
+while figures on the right-hand side display the evolution of the angular
+error over time. The goal was set to be node 1 $N1(-0.37, 1.68)$, and the
+robot's initial pose was $(x_0, y_0, \theta_0) \equiv (0,0,0)$. Hence, the
+distance to the goal was $d_g = 1.7203$ meters and the angle to the goal
+$\theta^R = 102.42^{\circ}$. The distance and angle tolerance thresholds where
+taken to be $d_{th} = 2\text{ cm}$ and $\theta_{th} = 2^{\circ}$ respectively.
+
+Since the actual final pose is not defined deterministically, five simulations
+of each possible combination of settings for the aforementioned 4-tuple were
+conducted.  Hence, all the following figures express the mean steady-state
+positional and angular errors across five runs. $e_d$ and $e_{\theta}$ express
+the steady-state errors with regard to the distance and the angle that the robot
+had to travel, respectively.
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_19/1/dist.tex}}
+      \caption{The error in displacement of the robot over time for
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$.
+        $e_d = 1.258$cm.}
+      \label{fig:19_1_distance}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_19/1/angle.tex}}
+      \caption{The error in bearing of the robot over time for
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$.
+      $e_{\theta} = 4.722^{\circ}$.}
+      \label{fig:19_1_angle}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_19/2/dist.tex}}
+      \caption{The error in displacement of the robot over time for
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$.
+        $e_d = 0.71$cm.}
+      \label{fig:19_2_distance}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_19/2/angle.tex}}
+      \caption{The error in bearing of the robot over time for
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$.
+      $e_{\theta} = 3.174^{\circ}$.}
+      \label{fig:19_2_angle}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_19/3/dist.tex}}
+      \caption{The error in displacement of the robot over time for
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$.
+        $e_d = -0.78$cm.}
+      \label{fig:19_3_distance}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_19/3/angle.tex}}
+      \caption{The error in bearing of the robot over time for
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$.
+      $e_{\theta} = 2.208^{\circ}$.}
+      \label{fig:19_3_angle}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_19/4/dist.tex}}
+      \caption{The error in displacement of the robot over time for
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$.
+        $e_d = -1.32$cm.}
+      \label{fig:19_4_distance}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_19/4/angle.tex}}
+      \caption{The error in bearing of the robot over time for
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$.
+      $e_{\theta} = 2.75^{\circ}$.}
+      \label{fig:19_4_angle}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_19/5/dist.tex}}
+      \caption{The error in displacement of the robot over time for
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$.
+        $e_d = 1.75$cm.}
+      \label{fig:19_5_distance}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_19/5/angle.tex}}
+      \caption{The error in bearing of the robot over time for
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$.
+      $e_{\theta} = 2.626^{\circ}$.}
+      \label{fig:19_5_angle}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_19/6/dist.tex}}
+      \caption{The error in displacement of the robot over time for
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$.
+        $e_d = 0.2738$cm.}
+      \label{fig:19_6_distance}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_19/6/angle.tex}}
+      \caption{The error in bearing of the robot over time for
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$.
+      $e_{\theta} = 2.612^{\circ}$.}
+      \label{fig:19_6_angle}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_19/7/dist.tex}}
+      \caption{The error in displacement of the robot over time for
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$.
+        $e_d = -1.25$cm.}
+      \label{fig:19_7_distance}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_19/7/angle.tex}}
+      \caption{The error in bearing of the robot over time for
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$.
+      $e_{\theta} = 1.830^{\circ}$.}
+      \label{fig:19_7_angle}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+
+
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_19/8/dist.tex}}
+      \caption{The error in displacement of the robot over time for
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$.
+        $e_d = -1.746$cm.}
+      \label{fig:19_8_distance}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_19/8/angle.tex}}
+      \caption{The error in bearing of the robot over time for
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$.
+      $e_{\theta} = 2.366^{\circ}$.}
+      \label{fig:19_8_angle}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_19/9/dist.tex}}
+      \caption{The error in displacement of the robot over time for
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$.
+        $e_d = 1.3695$cm.}
+      \label{fig:19_9_distance}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_19/9/angle.tex}}
+      \caption{The error in bearing of the robot over time for
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$.
+      $e_{\theta} = -1.649^{\circ}$.}
+      \label{fig:19_9_angle}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_19/10/dist.tex}}
+      \caption{The error in displacement of the robot over time for
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$.
+        $e_d = 0.663$cm.}
+      \label{fig:19_10_distance}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_19/10/angle.tex}}
+      \caption{The error in bearing of the robot over time for
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$.
+      $e_{\theta} = -2.243^{\circ}$.}
+      \label{fig:19_10_angle}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_19/11/dist.tex}}
+      \caption{The error in displacement of the robot over time for
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$.
+        $e_d = -0.940$cm.}
+      \label{fig:19_11_distance}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_19/11/angle.tex}}
+      \caption{The error in bearing of the robot over time for
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$.
+      $e_{\theta} = -1.417^{\circ}$.}
+      \label{fig:19_11_angle}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_19/12/dist.tex}}
+      \caption{The error in displacement of the robot over time for
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$.
+        $e_d = -0.689$cm.}
+      \label{fig:19_12_distance}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_19/12/angle.tex}}
+      \caption{The error in bearing of the robot over time for
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$.
+      $e_{\theta} = -3.49^{\circ}$.}
+      \label{fig:19_12_angle}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
