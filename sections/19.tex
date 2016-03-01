@@ -3,31 +3,102 @@ evaluation of the steady-state errors regarding the position and angle of the
 robot with regard to the selected goal position. In order to obtain a broader
 understanging of how the four $K_{*}$ gains influence the trajectory of the
 robot, twelve combinations were considered for the 4-tuple
-$$(K_{\Psi}^R, K_{\omega}^R, K_{\Psi}^T, K_{\omega}^T)$$
+$$(K_{\Psi}^R, K_{\omega}^T, K_{\omega}^R, K_{\Psi}^T)$$
 where
 $$K_{\Psi}^R \in \{0.1,0.2,0.5\} \cdot K_{\Psi,max}^R$$
 $$K_{\omega}^T \in \{0.1,0.2,0.5,0.75\} \cdot K_{\omega,max}^T$$
-$$K_{\omega}^R = 0.5 K_{\omega,max}^R \text{, and } K_{\Psi}^T = 0.5 K_{\Psi,max}^T$$
+$$K_{\omega}^R = 0.5 K_{\omega,max}^R \text{, and } K_{\Psi}^T = -0.5 K_{\Psi,min}^T$$
 
+Notice the minus sign for $K_{\Psi}^T$. Although theoretically (and using the
+approximative form for $d_p[k]$) this gain should be negative, simulations
+showed that the robot achieved lower levels of both displacemental and angular
+errors when considered positive\footnote{Analysis on Task 14 showed that
+$K_{\Psi,min}^T$ is considered negative}. For purposes of homogeneity we shall
+denote $K_{\Psi,max}^T = -K_{\Psi,min}^T$, so $K_{\Psi}^T = 0.5 K_{\Psi,max}^T$.
 
-Figures \ref{fig:19_1_distance} - \ref{fig:19_12_distance} on the left-hand side
-illustrate the evolution of the distance of the robot in relation to its goal,
-while figures on the right-hand side display the evolution of the angular
-error over time. The goal was set to be node 1 $N1(-0.37, 1.68)$, and the
-robot's initial pose was $(x_0, y_0, \theta_0) \equiv (0,0,0)$. Hence, the
-distance to the goal was $d_g = 1.7203$ meters and the angle to the goal
-$\theta^R = 102.42^{\circ}$. The distance and angle tolerance thresholds where
-taken to be $d_{th} = 2\text{ cm}$ and $\theta_{th} = 2^{\circ}$ respectively.
+Figures \ref{fig:19_1_distance} - \ref{fig:19_12_transitions} illustrate the
+evolution of the distance of the robot in relation to its goal, the angular
+error, and the discrete state trajectories, over time, for the aforementioned
+combinations of values of the gains $K_{*}$. The goal was set to be node 1
+$N1(-0.37, 1.68)$, and the robot's initial pose was
+$(x_0, y_0, \theta_0) \equiv (0,0,0)$. Hence, the distance to the goal was
+$d_g = 1.7203$ meters and the angle to the goal $\theta^R = 102.42^{\circ}$. The
+distance and angle tolerance thresholds where taken to be $d_{th} = 2\text{ cm}$
+and $\theta_{th} = 2^{\circ}$ respectively.
 
 Since the actual final pose is not defined deterministically, five simulations
 of each possible combination of settings for the aforementioned 4-tuple were
-conducted.  Hence, all the following figures express the mean steady-state
+conducted. Hence, all the following figures express the mean steady-state
 positional and angular errors across five runs.
 
 Table \ref{tbl:19_errors} illustrates the steady-state errors $e_d$ and
 $e_{\theta}$ regarding the distance and the angle that the robot had to travel,
 respectively.
 
+
+\begin{table}[H]\centering
+    \begin{tabular}{c|c|c|c}
+    $K_{\Psi}^R / K_{\Psi,max}^R$ & $K_{\omega}^T / K_{\omega,max}^T$ & $e_{d}\ (cm)$  & $e_{\theta}\ (\text{deg})$ \\ \hline
+    0.1        & 0.1          & 1.73    & 0.329     \\
+    0.1        & 0.2          & 0.60    & 0.144     \\
+    0.1        & 0.5          & 0.90    & 0.330     \\
+    0.1        & 0.75         & 1.9     & 0.054     \\
+    0.2        & 0.1          & 1.47    & 0.419     \\
+    0.2        & 0.2          & 1.21    & 0.308     \\
+    0.2        & 0.5          & 0.67    & 0.116     \\
+    0.2        & 0.75         & 2.12    & 0.026     \\
+    0.5        & 0.1          & 1.26    & 0.303     \\
+    0.5        & 0.2          & 0.75    & 0.585     \\
+    0.5        & 0.5          & 1.05    & 0.695     \\
+    0.5        & 0.75         & 0.86    & 0.347     \\
+    \end{tabular}
+    \caption{Mean steady-state errors regarding the distance and bearing to Node
+      1 for the 12 different combinations considered for the 4-tuple
+      $(K_{\Psi}^R, K_{\omega}^T, K_{\omega}^R, K_{\Psi}^T)$}
+    \label{tbl:19_errors}
+\end{table}
+
+
+The combination of the two control components made it possible for the robot
+to move to any location inside the simulation environment. In particular, for
+the single goal considered here, the controller made it possible for the robot
+to approach node 1 within a radius of length $d_{th}$ (with one exception, when
+$(K_{\Psi}^R / K_{\Psi,max}^R, K_{\omega}^T / K_{\omega,max}^T) \equiv (0.2, 0.75)$)
+and with a bearing well within the $2^{\circ}$ upper threshold. The second
+component of the line-following controller was partly responsible for reducing
+the bearing errors compared to the case when only the rotational controller was
+enabled. However, in order for the second component's input to be able to kick
+in in the first place, it was necessary to limit the translational velocity of
+the robot to a value of $u_{\omega} = 400$, so as to permit the correctional
+input of this component to become active, since there is an upper limit to the
+velocities the robot can achieve, either in simulation or in real-life.
+
+The discrete state trajectory figures express what was expected: as the value
+of a gain $K_{*}$ increases, the time that the robot stays in the corresponding
+state decreases. What was not expected, though, was the temporary spikes into
+state \texttt{Stop} for all cases when $K_{\omega}^T / K_{\omega,max}^T = 0.75$.
+This makes sence, since that high a value for the gain of the translational
+part of the line-following controller makes the robot overshoot the goal. Its
+momentum is such that while it approaches the goal within $d_{th}$ m and its
+state transitions from \texttt{Translation} to \texttt{Stop}, it cannot physically
+stop and steps out of the circle with radius $d_{th}$, and thus its state goes back
+to \texttt{Translation}. The duration the robot stays at state \texttt{Stop} is
+the duration of time it spends inside this virual circle with radius $d_{th}$.
+This time interval is observed to be unequal among all three cases, due to the
+fact that the robot travels forwards (part I of the line-following controller)
+and rotates (part II of the line-following controller) simultaneously.
+
+The following sections illustrate the displacemental and angular errors and
+the discrete state trajectory over time for different values of the four gains.
+
+
+\subsection*{$\Bigg(
+  \dfrac{K_{\Psi}^R}{K_{\Psi,max}^R},
+  \dfrac{K_{\omega}^T}{K_{\omega,max}^T},
+  \dfrac{K_{\omega}^R}{K_{\omega,max}^R},
+  \dfrac{K_{\Psi}^T}{K_{\Psi,max}^T}\Bigg) \equiv (0.1, 0.1, 0.5, 0.5)$}
+
+\vfill
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\linewidth}
   \begin{minipage}{0.45\linewidth}
@@ -49,7 +120,24 @@ respectively.
   \end{minipage}
 \end{minipage}
 }
+\vfill
+\begin{figure}[H]\centering
+  \scalebox{0.6}{\input{./figures/task_19/1/transitions.tex}}
+  \caption{The discrete state trajectory for
+    $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$.
+    1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}}
+  \label{fig:19_1_transitions}
+\end{figure}
+\vfill
 
+
+\subsection*{$\Bigg(
+  \dfrac{K_{\Psi}^R}{K_{\Psi,max}^R},
+  \dfrac{K_{\omega}^T}{K_{\omega,max}^T},
+  \dfrac{K_{\omega}^R}{K_{\omega,max}^R},
+  \dfrac{K_{\Psi}^T}{K_{\Psi,max}^T}\Bigg) \equiv (0.1, 0.2, 0.5, 0.5)$}
+
+\vfill
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\linewidth}
   \begin{minipage}{0.45\linewidth}
@@ -71,7 +159,24 @@ respectively.
   \end{minipage}
 \end{minipage}
 }
+\vfill
+\begin{figure}[H]\centering
+  \scalebox{0.6}{\input{./figures/task_19/2/transitions.tex}}
+  \caption{The discrete state trajectory for
+    $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$.
+    1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}}
+  \label{fig:19_2_transitions}
+\end{figure}
+\vfill
 
+
+\subsection*{$\Bigg(
+  \dfrac{K_{\Psi}^R}{K_{\Psi,max}^R},
+  \dfrac{K_{\omega}^T}{K_{\omega,max}^T},
+  \dfrac{K_{\omega}^R}{K_{\omega,max}^R},
+  \dfrac{K_{\Psi}^T}{K_{\Psi,max}^T}\Bigg) \equiv (0.1, 0.5, 0.5, 0.5)$}
+
+\vfill
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\linewidth}
   \begin{minipage}{0.45\linewidth}
@@ -93,7 +198,24 @@ respectively.
   \end{minipage}
 \end{minipage}
 }
+\vfill
+\begin{figure}[H]\centering
+  \scalebox{0.6}{\input{./figures/task_19/3/transitions.tex}}
+  \caption{The discrete state trajectory for
+    $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$.
+    1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}}
+  \label{fig:19_3_transitions}
+\end{figure}
+\vfill
 
+
+\subsection*{$\Bigg(
+  \dfrac{K_{\Psi}^R}{K_{\Psi,max}^R},
+  \dfrac{K_{\omega}^T}{K_{\omega,max}^T},
+  \dfrac{K_{\omega}^R}{K_{\omega,max}^R},
+  \dfrac{K_{\Psi}^T}{K_{\Psi,max}^T}\Bigg) \equiv (0.1, 0.75, 0.5, 0.5)$}
+
+\vfill
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\linewidth}
   \begin{minipage}{0.45\linewidth}
@@ -115,9 +237,24 @@ respectively.
   \end{minipage}
 \end{minipage}
 }
+\vfill
+\begin{figure}[H]\centering
+  \scalebox{0.6}{\input{./figures/task_19/4/transitions.tex}}
+  \caption{The discrete state trajectory for
+    $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$.
+    1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}}
+  \label{fig:19_4_transitions}
+\end{figure}
+\vfill
 
 
+\subsection*{$\Bigg(
+  \dfrac{K_{\Psi}^R}{K_{\Psi,max}^R},
+  \dfrac{K_{\omega}^T}{K_{\omega,max}^T},
+  \dfrac{K_{\omega}^R}{K_{\omega,max}^R},
+  \dfrac{K_{\Psi}^T}{K_{\Psi,max}^T}\Bigg) \equiv (0.2, 0.1, 0.5, 0.5)$}
 
+\vfill
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\linewidth}
   \begin{minipage}{0.45\linewidth}
@@ -139,7 +276,24 @@ respectively.
   \end{minipage}
 \end{minipage}
 }
+\vfill
+\begin{figure}[H]\centering
+  \scalebox{0.6}{\input{./figures/task_19/5/transitions.tex}}
+  \caption{The discrete state trajectory for
+    $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$.
+  1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}}
+  \label{fig:19_5_transitions}
+\end{figure}
+\vfill
 
+
+\subsection*{$\Bigg(
+  \dfrac{K_{\Psi}^R}{K_{\Psi,max}^R},
+  \dfrac{K_{\omega}^T}{K_{\omega,max}^T},
+  \dfrac{K_{\omega}^R}{K_{\omega,max}^R},
+  \dfrac{K_{\Psi}^T}{K_{\Psi,max}^T}\Bigg) \equiv (0.2, 0.2, 0.5, 0.5)$}
+
+\vfill
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\linewidth}
   \begin{minipage}{0.45\linewidth}
@@ -161,7 +315,24 @@ respectively.
   \end{minipage}
 \end{minipage}
 }
+\vfill
+\begin{figure}[H]\centering
+  \scalebox{0.6}{\input{./figures/task_19/6/transitions.tex}}
+  \caption{The discrete state trajectory for
+    $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$.
+    1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}}
+  \label{fig:19_6_transitions}
+\end{figure}
+\vfill
 
+
+\subsection*{$\Bigg(
+  \dfrac{K_{\Psi}^R}{K_{\Psi,max}^R},
+  \dfrac{K_{\omega}^T}{K_{\omega,max}^T},
+  \dfrac{K_{\omega}^R}{K_{\omega,max}^R},
+  \dfrac{K_{\Psi}^T}{K_{\Psi,max}^T}\Bigg) \equiv (0.2, 0.5, 0.5, 0.5)$}
+
+\vfill
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\linewidth}
   \begin{minipage}{0.45\linewidth}
@@ -183,10 +354,24 @@ respectively.
   \end{minipage}
 \end{minipage}
 }
+\vfill
+\begin{figure}[H]\centering
+  \scalebox{0.6}{\input{./figures/task_19/7/transitions.tex}}
+  \caption{The discrete state trajectory for
+    $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$.
+    1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}}
+  \label{fig:19_7_transitions}
+\end{figure}
+\vfill
 
 
+\subsection*{$\Bigg(
+  \dfrac{K_{\Psi}^R}{K_{\Psi,max}^R},
+  \dfrac{K_{\omega}^T}{K_{\omega,max}^T},
+  \dfrac{K_{\omega}^R}{K_{\omega,max}^R},
+  \dfrac{K_{\Psi}^T}{K_{\Psi,max}^T}\Bigg) \equiv (0.2, 0.75, 0.5, 0.5)$}
 
-
+\vfill
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\linewidth}
   \begin{minipage}{0.45\linewidth}
@@ -208,7 +393,24 @@ respectively.
   \end{minipage}
 \end{minipage}
 }
+\vfill
+\begin{figure}[H]\centering
+  \scalebox{0.6}{\input{./figures/task_19/8/transitions.tex}}
+  \caption{The discrete state trajectory for
+    $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$.
+    1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}}
+  \label{fig:19_8_transitions}
+\end{figure}
+\vfill
 
+
+\subsection*{$\Bigg(
+  \dfrac{K_{\Psi}^R}{K_{\Psi,max}^R},
+  \dfrac{K_{\omega}^T}{K_{\omega,max}^T},
+  \dfrac{K_{\omega}^R}{K_{\omega,max}^R},
+  \dfrac{K_{\Psi}^T}{K_{\Psi,max}^T}\Bigg) \equiv (0.5, 0.1, 0.5, 0.5)$}
+
+\vfill
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\linewidth}
   \begin{minipage}{0.45\linewidth}
@@ -230,7 +432,24 @@ respectively.
   \end{minipage}
 \end{minipage}
 }
+\vfill
+\begin{figure}[H]\centering
+  \scalebox{0.6}{\input{./figures/task_19/9/transitions.tex}}
+  \caption{The discrete state trajectory for
+    $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$.
+  1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}}
+  \label{fig:19_9_transitions}
+\end{figure}
+\vfill
 
+
+\subsection*{$\Bigg(
+  \dfrac{K_{\Psi}^R}{K_{\Psi,max}^R},
+  \dfrac{K_{\omega}^T}{K_{\omega,max}^T},
+  \dfrac{K_{\omega}^R}{K_{\omega,max}^R},
+  \dfrac{K_{\Psi}^T}{K_{\Psi,max}^T}\Bigg) \equiv (0.5, 0.2, 0.5, 0.5)$}
+
+\vfill
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\linewidth}
   \begin{minipage}{0.45\linewidth}
@@ -252,7 +471,24 @@ respectively.
   \end{minipage}
 \end{minipage}
 }
+\vfill
+\begin{figure}[H]\centering
+  \scalebox{0.6}{\input{./figures/task_19/10/transitions.tex}}
+  \caption{The discrete state trajectory for
+    $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$.
+    1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}}
+  \label{fig:19_10_transitions}
+\end{figure}
+\vfill
 
+
+\subsection*{$\Bigg(
+  \dfrac{K_{\Psi}^R}{K_{\Psi,max}^R},
+  \dfrac{K_{\omega}^T}{K_{\omega,max}^T},
+  \dfrac{K_{\omega}^R}{K_{\omega,max}^R},
+  \dfrac{K_{\Psi}^T}{K_{\Psi,max}^T}\Bigg) \equiv (0.5, 0.5, 0.5, 0.5)$}
+
+\vfill
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\linewidth}
   \begin{minipage}{0.45\linewidth}
@@ -274,7 +510,24 @@ respectively.
   \end{minipage}
 \end{minipage}
 }
+\vfill
+\begin{figure}[H]\centering
+  \scalebox{0.6}{\input{./figures/task_19/11/transitions.tex}}
+  \caption{The discrete state trajectory for
+    $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$.
+    1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}}
+  \label{fig:19_11_transitions}
+\end{figure}
+\vfill
 
+
+\subsection*{$\Bigg(
+  \dfrac{K_{\Psi}^R}{K_{\Psi,max}^R},
+  \dfrac{K_{\omega}^T}{K_{\omega,max}^T},
+  \dfrac{K_{\omega}^R}{K_{\omega,max}^R},
+  \dfrac{K_{\Psi}^T}{K_{\Psi,max}^T}\Bigg) \equiv (0.5, 0.75, 0.5, 0.5)$}
+
+\vfill
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\linewidth}
   \begin{minipage}{0.45\linewidth}
@@ -296,149 +549,12 @@ respectively.
   \end{minipage}
 \end{minipage}
 }
-
-
-
-
-
-%\noindent\makebox[\textwidth][c]{%
-%\begin{minipage}{\linewidth}
-  %\begin{minipage}{0.45\linewidth}
-    %\begin{figure}[H]
-      %\scalebox{0.6}{\input{./figures/task_19/1/transitions.tex}}
-      %\caption{}
-      %\label{fig:19_1_transitions}
-    %\end{figure}
-  %\end{minipage}
-  %\hfill
-  %\begin{minipage}{0.45\linewidth}
-    %\begin{figure}[H]
-      %\scalebox{0.6}{\input{./figures/task_19/2/transitions.tex}}
-      %\caption{}
-      %\label{fig:19_2_transitions}
-    %\end{figure}
-  %\end{minipage}
-%\end{minipage}
-%}
-
-%\noindent\makebox[\textwidth][c]{%
-%\begin{minipage}{\linewidth}
-  %\begin{minipage}{0.45\linewidth}
-    %\begin{figure}[H]
-      %\scalebox{0.6}{\input{./figures/task_19/3/transitions.tex}}
-      %\caption{}
-      %\label{fig:19_3_transitions}
-    %\end{figure}
-  %\end{minipage}
-  %\hfill
-  %\begin{minipage}{0.45\linewidth}
-    %\begin{figure}[H]
-      %\scalebox{0.6}{\input{./figures/task_19/4/transitions.tex}}
-      %\caption{}
-      %\label{fig:19_4_transitions}
-    %\end{figure}
-  %\end{minipage}
-%\end{minipage}
-%}
-
-%\noindent\makebox[\textwidth][c]{%
-%\begin{minipage}{\linewidth}
-  %\begin{minipage}{0.45\linewidth}
-    %\begin{figure}[H]
-      %\scalebox{0.6}{\input{./figures/task_19/5/transitions.tex}}
-      %\caption{}
-      %\label{fig:19_5_transitions}
-    %\end{figure}
-  %\end{minipage}
-  %\hfill
-  %\begin{minipage}{0.45\linewidth}
-    %\begin{figure}[H]
-      %\scalebox{0.6}{\input{./figures/task_19/6/transitions.tex}}
-      %\caption{}
-      %\label{fig:19_6_transitions}
-    %\end{figure}
-  %\end{minipage}
-%\end{minipage}
-%}
-
-%\noindent\makebox[\textwidth][c]{%
-%\begin{minipage}{\linewidth}
-  %\begin{minipage}{0.45\linewidth}
-    %\begin{figure}[H]
-      %\scalebox{0.6}{\input{./figures/task_19/7/transitions.tex}}
-      %\caption{}
-      %\label{fig:19_7_transitions}
-    %\end{figure}
-  %\end{minipage}
-  %\hfill
-  %\begin{minipage}{0.45\linewidth}
-    %\begin{figure}[H]
-      %\scalebox{0.6}{\input{./figures/task_19/8/transitions.tex}}
-      %\caption{}
-      %\label{fig:19_8_transitions}
-    %\end{figure}
-  %\end{minipage}
-%\end{minipage}
-%}
-
-%\noindent\makebox[\textwidth][c]{%
-%\begin{minipage}{\linewidth}
-  %\begin{minipage}{0.45\linewidth}
-    %\begin{figure}[H]
-      %\scalebox{0.6}{\input{./figures/task_19/9/transitions.tex}}
-      %\caption{}
-      %\label{fig:19_9_transitions}
-    %\end{figure}
-  %\end{minipage}
-  %\hfill
-  %\begin{minipage}{0.45\linewidth}
-    %\begin{figure}[H]
-      %\scalebox{0.6}{\input{./figures/task_19/10/transitions.tex}}
-      %\caption{}
-      %\label{fig:19_10_transitions}
-    %\end{figure}
-  %\end{minipage}
-%\end{minipage}
-%}
-
-%\noindent\makebox[\textwidth][c]{%
-%\begin{minipage}{\linewidth}
-  %\begin{minipage}{0.45\linewidth}
-    %\begin{figure}[H]
-      %\scalebox{0.6}{\input{./figures/task_19/11/transitions.tex}}
-      %\caption{}
-      %\label{fig:19_11_transitions}
-    %\end{figure}
-  %\end{minipage}
-  %\hfill
-  %\begin{minipage}{0.45\linewidth}
-    %\begin{figure}[H]
-      %\scalebox{0.6}{\input{./figures/task_19/12/transitions.tex}}
-      %\caption{}
-      %\label{fig:19_12_transitions}
-    %\end{figure}
-  %\end{minipage}
-%\end{minipage}
-%}
-
-
-
-\begin{table}\centering
-    \begin{tabular}{c|c|c|c}
-    $K_{\Psi}^R / K_{\Psi,max}^R$ & $K_{\omega}^T / K_{\omega,max}^T$ & $e_{d}(cm)$  & $e_{\theta}(\text{deg})$ \\ \hline
-    0.1        & 0.1          & 1.73    & -0.329      \\
-    0.1        & 0.2          & 0.60    & 0.144      \\
-    0.1        & 0.5          & -0.90  & 0.330      \\
-    0.1        & 0.75         & -1.9    & -0.054      \\
-    0.2        & 0.1          & 1.47    & -0.419      \\
-    0.2        & 0.2          & 1.21    & 0.308      \\
-    0.2        & 0.5          & -0.67   & 0.116      \\
-    0.2        & 0.75         & -2.12   & 0.026      \\
-    0.5        & 0.1          & 1.26    & -0.303     \\
-    0.5        & 0.2          & 0.75    & -0.585     \\
-    0.5        & 0.5          & -1.05   & -0.695     \\
-    0.5        & 0.75         & -0.86   & -0.347      \\
-    \end{tabular}
-    \caption{}
-    \label{tbl:19_errors}
-\end{table}
+\vfill
+\begin{figure}[H]\centering
+  \scalebox{0.6}{\input{./figures/task_19/12/transitions.tex}}
+  \caption{The discrete state trajectory for
+    $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$.
+    1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}}
+  \label{fig:19_12_transitions}
+\end{figure}
+\vfill

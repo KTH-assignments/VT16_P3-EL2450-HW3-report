@@ -1,7 +1,7 @@
 clear;
 close all;
 
-p_1 = dlmread('1why.csv', ';', 1, 0);
+p_1 = dlmread('2.csv', ';', 1, 0);
 
 nz = find(p_1(:,4));
 p_1 = p_1(nz-1:end,:);
@@ -18,7 +18,6 @@ tr_2 = abs(cos(102.4204 * pi/180) * (-0.37 - p_1(:,2)) ...
 
 
 figure
-plot(p_1(:,1), tr_2 + tr_1 + 1);
-axis([0 p_1(end,1) 0.8 3.2])
+plot(p_1(:,1), tr_2 + tr_1);
+axis([0 p_1(:,)])
 
-matlab2tikz('transitions.tex')

@@ -23,10 +23,10 @@ the solution of the equation inside the parentheses should lie inside the unit
 circle:
 
 \begin{align}
-  \Big|1 + &p T_s R K_{\omega}^T\Big| < 1 \nonumber \\
-  -1 < 1 + &p T_s R K_{\omega}^T < 1 \nonumber \\
-  -2 < &p T_s R K_{\omega}^T < 0 \nonumber \\
-  -\dfrac{2}{p T_s R} <\ &K_{\omega}^T < 0 \label{eq:14.2}
+  \Big|1 + &p T_s \dfrac{R}{L} K_{\omega}^T\Big| < 1 \nonumber \\
+  -1 < 1 + &p T_s \dfrac{R}{L} K_{\omega}^T < 1 \nonumber \\
+  -2 < &p T_s \dfrac{R}{L} K_{\omega}^T < 0 \nonumber \\
+  -\dfrac{2L}{p T_s R} <\ &K_{\omega}^T < 0 \label{eq:14.2}
 \end{align}
 
 Hence, the maximum value $K_{\omega}^T$ can take for the system to be marginally
@@ -41,4 +41,4 @@ with different values and choose one that results in balancing a small angular
 error, a minimal overshoot, if any, and a quick enough settling time.
 
 Eventually, the choice made for $K_{\omega}^T$ was
-$K_{\omega}^T = \frac{1}{2} K_{\omega,min}^T = -\frac{1}{p T_s R}$.
+$K_{\omega}^T = \frac{1}{2} K_{\omega,min}^T = -\frac{L}{p T_s R}$.
