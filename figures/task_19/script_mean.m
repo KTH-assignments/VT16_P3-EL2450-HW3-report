@@ -58,6 +58,6 @@ a_time = eval(['a_', int2str(max_id), int2str(1)]);
 plot(a_time(:,1), 102.4204 - a);
 grid;
 
-figure
-plotyy(d_time(:,1),1.7203 - d,  a_time(:,1), 102.4204 - a);
-grid
+%figure
+%plotyy(d_time(:,1),1.7203 - d,  a_time(:,1), 102.4204 - a);
+%grid

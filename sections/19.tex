@@ -1,7 +1,7 @@
 Evaluating the performance of the hybrid automaton primarily involves the
 evaluation of the steady-state errors regarding the position and angle of the
 robot with regard to the selected goal position. In order to obtain a broader
-understanging of how the four $K_{\*}$ gains influence the trajectory of the
+understanging of how the four $K_{*}$ gains influence the trajectory of the
 robot, twelve combinations were considered for the 4-tuple
 $$(K_{\Psi}^R, K_{\omega}^R, K_{\Psi}^T, K_{\omega}^T)$$
 where
@@ -22,9 +22,11 @@ taken to be $d_{th} = 2\text{ cm}$ and $\theta_{th} = 2^{\circ}$ respectively.
 Since the actual final pose is not defined deterministically, five simulations
 of each possible combination of settings for the aforementioned 4-tuple were
 conducted.  Hence, all the following figures express the mean steady-state
-positional and angular errors across five runs. $e_d$ and $e_{\theta}$ express
-the steady-state errors with regard to the distance and the angle that the robot
-had to travel, respectively.
+positional and angular errors across five runs.
+
+Table \ref{tbl:19_errors} illustrates the steady-state errors $e_d$ and
+$e_{\theta}$ regarding the distance and the angle that the robot had to travel,
+respectively.
 
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\linewidth}
@@ -32,8 +34,7 @@ had to travel, respectively.
     \begin{figure}[H]
       \scalebox{0.6}{\input{./figures/task_19/1/dist.tex}}
       \caption{The error in displacement of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$.
-        $e_d = 1.258$cm.}
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$}
       \label{fig:19_1_distance}
     \end{figure}
   \end{minipage}
@@ -42,8 +43,7 @@ had to travel, respectively.
     \begin{figure}[H]
       \scalebox{0.6}{\input{./figures/task_19/1/angle.tex}}
       \caption{The error in bearing of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$.
-      $e_{\theta} = 4.722^{\circ}$.}
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$}
       \label{fig:19_1_angle}
     \end{figure}
   \end{minipage}
@@ -56,8 +56,7 @@ had to travel, respectively.
     \begin{figure}[H]
       \scalebox{0.6}{\input{./figures/task_19/2/dist.tex}}
       \caption{The error in displacement of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$.
-        $e_d = 0.71$cm.}
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$}
       \label{fig:19_2_distance}
     \end{figure}
   \end{minipage}
@@ -66,8 +65,7 @@ had to travel, respectively.
     \begin{figure}[H]
       \scalebox{0.6}{\input{./figures/task_19/2/angle.tex}}
       \caption{The error in bearing of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$.
-      $e_{\theta} = 3.174^{\circ}$.}
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$}
       \label{fig:19_2_angle}
     \end{figure}
   \end{minipage}
@@ -80,8 +78,7 @@ had to travel, respectively.
     \begin{figure}[H]
       \scalebox{0.6}{\input{./figures/task_19/3/dist.tex}}
       \caption{The error in displacement of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$.
-        $e_d = -0.78$cm.}
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$}
       \label{fig:19_3_distance}
     \end{figure}
   \end{minipage}
@@ -90,8 +87,7 @@ had to travel, respectively.
     \begin{figure}[H]
       \scalebox{0.6}{\input{./figures/task_19/3/angle.tex}}
       \caption{The error in bearing of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$.
-      $e_{\theta} = 2.208^{\circ}$.}
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$}
       \label{fig:19_3_angle}
     \end{figure}
   \end{minipage}
@@ -104,8 +100,7 @@ had to travel, respectively.
     \begin{figure}[H]
       \scalebox{0.6}{\input{./figures/task_19/4/dist.tex}}
       \caption{The error in displacement of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$.
-        $e_d = -1.32$cm.}
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$}
       \label{fig:19_4_distance}
     \end{figure}
   \end{minipage}
@@ -114,8 +109,7 @@ had to travel, respectively.
     \begin{figure}[H]
       \scalebox{0.6}{\input{./figures/task_19/4/angle.tex}}
       \caption{The error in bearing of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$.
-      $e_{\theta} = 2.75^{\circ}$.}
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$}
       \label{fig:19_4_angle}
     \end{figure}
   \end{minipage}
@@ -130,8 +124,7 @@ had to travel, respectively.
     \begin{figure}[H]
       \scalebox{0.6}{\input{./figures/task_19/5/dist.tex}}
       \caption{The error in displacement of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$.
-        $e_d = 1.75$cm.}
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$}
       \label{fig:19_5_distance}
     \end{figure}
   \end{minipage}
@@ -140,8 +133,7 @@ had to travel, respectively.
     \begin{figure}[H]
       \scalebox{0.6}{\input{./figures/task_19/5/angle.tex}}
       \caption{The error in bearing of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$.
-      $e_{\theta} = 2.626^{\circ}$.}
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$}
       \label{fig:19_5_angle}
     \end{figure}
   \end{minipage}
@@ -154,8 +146,7 @@ had to travel, respectively.
     \begin{figure}[H]
       \scalebox{0.6}{\input{./figures/task_19/6/dist.tex}}
       \caption{The error in displacement of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$.
-        $e_d = 0.2738$cm.}
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$}
       \label{fig:19_6_distance}
     \end{figure}
   \end{minipage}
@@ -164,8 +155,7 @@ had to travel, respectively.
     \begin{figure}[H]
       \scalebox{0.6}{\input{./figures/task_19/6/angle.tex}}
       \caption{The error in bearing of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$.
-      $e_{\theta} = 2.612^{\circ}$.}
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$}
       \label{fig:19_6_angle}
     \end{figure}
   \end{minipage}
@@ -178,8 +168,7 @@ had to travel, respectively.
     \begin{figure}[H]
       \scalebox{0.6}{\input{./figures/task_19/7/dist.tex}}
       \caption{The error in displacement of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$.
-        $e_d = -1.25$cm.}
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$}
       \label{fig:19_7_distance}
     \end{figure}
   \end{minipage}
@@ -188,8 +177,7 @@ had to travel, respectively.
     \begin{figure}[H]
       \scalebox{0.6}{\input{./figures/task_19/7/angle.tex}}
       \caption{The error in bearing of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$.
-      $e_{\theta} = 1.830^{\circ}$.}
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$}
       \label{fig:19_7_angle}
     \end{figure}
   \end{minipage}
@@ -205,8 +193,7 @@ had to travel, respectively.
     \begin{figure}[H]
       \scalebox{0.6}{\input{./figures/task_19/8/dist.tex}}
       \caption{The error in displacement of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$.
-        $e_d = -1.746$cm.}
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$}
       \label{fig:19_8_distance}
     \end{figure}
   \end{minipage}
@@ -215,8 +202,7 @@ had to travel, respectively.
     \begin{figure}[H]
       \scalebox{0.6}{\input{./figures/task_19/8/angle.tex}}
       \caption{The error in bearing of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$.
-      $e_{\theta} = 2.366^{\circ}$.}
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$}
       \label{fig:19_8_angle}
     \end{figure}
   \end{minipage}
@@ -229,8 +215,7 @@ had to travel, respectively.
     \begin{figure}[H]
       \scalebox{0.6}{\input{./figures/task_19/9/dist.tex}}
       \caption{The error in displacement of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$.
-        $e_d = 1.3695$cm.}
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$}
       \label{fig:19_9_distance}
     \end{figure}
   \end{minipage}
@@ -239,8 +224,7 @@ had to travel, respectively.
     \begin{figure}[H]
       \scalebox{0.6}{\input{./figures/task_19/9/angle.tex}}
       \caption{The error in bearing of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$.
-      $e_{\theta} = -1.649^{\circ}$.}
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$}
       \label{fig:19_9_angle}
     \end{figure}
   \end{minipage}
@@ -253,8 +237,7 @@ had to travel, respectively.
     \begin{figure}[H]
       \scalebox{0.6}{\input{./figures/task_19/10/dist.tex}}
       \caption{The error in displacement of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$.
-        $e_d = 0.663$cm.}
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$}
       \label{fig:19_10_distance}
     \end{figure}
   \end{minipage}
@@ -263,8 +246,7 @@ had to travel, respectively.
     \begin{figure}[H]
       \scalebox{0.6}{\input{./figures/task_19/10/angle.tex}}
       \caption{The error in bearing of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$.
-      $e_{\theta} = -2.243^{\circ}$.}
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$}
       \label{fig:19_10_angle}
     \end{figure}
   \end{minipage}
@@ -277,8 +259,7 @@ had to travel, respectively.
     \begin{figure}[H]
       \scalebox{0.6}{\input{./figures/task_19/11/dist.tex}}
       \caption{The error in displacement of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$.
-        $e_d = -0.940$cm.}
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$}
       \label{fig:19_11_distance}
     \end{figure}
   \end{minipage}
@@ -287,8 +268,7 @@ had to travel, respectively.
     \begin{figure}[H]
       \scalebox{0.6}{\input{./figures/task_19/11/angle.tex}}
       \caption{The error in bearing of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$.
-      $e_{\theta} = -1.417^{\circ}$.}
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$}
       \label{fig:19_11_angle}
     \end{figure}
   \end{minipage}
@@ -301,8 +281,7 @@ had to travel, respectively.
     \begin{figure}[H]
       \scalebox{0.6}{\input{./figures/task_19/12/dist.tex}}
       \caption{The error in displacement of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$.
-        $e_d = -0.689$cm.}
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$}
       \label{fig:19_12_distance}
     \end{figure}
   \end{minipage}
@@ -311,10 +290,155 @@ had to travel, respectively.
     \begin{figure}[H]
       \scalebox{0.6}{\input{./figures/task_19/12/angle.tex}}
       \caption{The error in bearing of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$.
-      $e_{\theta} = -3.49^{\circ}$.}
+        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$}
       \label{fig:19_12_angle}
     \end{figure}
   \end{minipage}
 \end{minipage}
 }
+
+
+
+
+
+%\noindent\makebox[\textwidth][c]{%
+%\begin{minipage}{\linewidth}
+  %\begin{minipage}{0.45\linewidth}
+    %\begin{figure}[H]
+      %\scalebox{0.6}{\input{./figures/task_19/1/transitions.tex}}
+      %\caption{}
+      %\label{fig:19_1_transitions}
+    %\end{figure}
+  %\end{minipage}
+  %\hfill
+  %\begin{minipage}{0.45\linewidth}
+    %\begin{figure}[H]
+      %\scalebox{0.6}{\input{./figures/task_19/2/transitions.tex}}
+      %\caption{}
+      %\label{fig:19_2_transitions}
+    %\end{figure}
+  %\end{minipage}
+%\end{minipage}
+%}
+
+%\noindent\makebox[\textwidth][c]{%
+%\begin{minipage}{\linewidth}
+  %\begin{minipage}{0.45\linewidth}
+    %\begin{figure}[H]
+      %\scalebox{0.6}{\input{./figures/task_19/3/transitions.tex}}
+      %\caption{}
+      %\label{fig:19_3_transitions}
+    %\end{figure}
+  %\end{minipage}
+  %\hfill
+  %\begin{minipage}{0.45\linewidth}
+    %\begin{figure}[H]
+      %\scalebox{0.6}{\input{./figures/task_19/4/transitions.tex}}
+      %\caption{}
+      %\label{fig:19_4_transitions}
+    %\end{figure}
+  %\end{minipage}
+%\end{minipage}
+%}
+
+%\noindent\makebox[\textwidth][c]{%
+%\begin{minipage}{\linewidth}
+  %\begin{minipage}{0.45\linewidth}
+    %\begin{figure}[H]
+      %\scalebox{0.6}{\input{./figures/task_19/5/transitions.tex}}
+      %\caption{}
+      %\label{fig:19_5_transitions}
+    %\end{figure}
+  %\end{minipage}
+  %\hfill
+  %\begin{minipage}{0.45\linewidth}
+    %\begin{figure}[H]
+      %\scalebox{0.6}{\input{./figures/task_19/6/transitions.tex}}
+      %\caption{}
+      %\label{fig:19_6_transitions}
+    %\end{figure}
+  %\end{minipage}
+%\end{minipage}
+%}
+
+%\noindent\makebox[\textwidth][c]{%
+%\begin{minipage}{\linewidth}
+  %\begin{minipage}{0.45\linewidth}
+    %\begin{figure}[H]
+      %\scalebox{0.6}{\input{./figures/task_19/7/transitions.tex}}
+      %\caption{}
+      %\label{fig:19_7_transitions}
+    %\end{figure}
+  %\end{minipage}
+  %\hfill
+  %\begin{minipage}{0.45\linewidth}
+    %\begin{figure}[H]
+      %\scalebox{0.6}{\input{./figures/task_19/8/transitions.tex}}
+      %\caption{}
+      %\label{fig:19_8_transitions}
+    %\end{figure}
+  %\end{minipage}
+%\end{minipage}
+%}
+
+%\noindent\makebox[\textwidth][c]{%
+%\begin{minipage}{\linewidth}
+  %\begin{minipage}{0.45\linewidth}
+    %\begin{figure}[H]
+      %\scalebox{0.6}{\input{./figures/task_19/9/transitions.tex}}
+      %\caption{}
+      %\label{fig:19_9_transitions}
+    %\end{figure}
+  %\end{minipage}
+  %\hfill
+  %\begin{minipage}{0.45\linewidth}
+    %\begin{figure}[H]
+      %\scalebox{0.6}{\input{./figures/task_19/10/transitions.tex}}
+      %\caption{}
+      %\label{fig:19_10_transitions}
+    %\end{figure}
+  %\end{minipage}
+%\end{minipage}
+%}
+
+%\noindent\makebox[\textwidth][c]{%
+%\begin{minipage}{\linewidth}
+  %\begin{minipage}{0.45\linewidth}
+    %\begin{figure}[H]
+      %\scalebox{0.6}{\input{./figures/task_19/11/transitions.tex}}
+      %\caption{}
+      %\label{fig:19_11_transitions}
+    %\end{figure}
+  %\end{minipage}
+  %\hfill
+  %\begin{minipage}{0.45\linewidth}
+    %\begin{figure}[H]
+      %\scalebox{0.6}{\input{./figures/task_19/12/transitions.tex}}
+      %\caption{}
+      %\label{fig:19_12_transitions}
+    %\end{figure}
+  %\end{minipage}
+%\end{minipage}
+%}
+
+
+
+\begin{table}\centering
+    \begin{tabular}{c|c|c|c}
+    $K_{\Psi}^R / K_{\Psi,max}^R$ & $K_{\omega}^T / K_{\omega,max}^T$ & $e_{d}(cm)$  & $e_{\theta}(\text{deg})$ \\ \hline
+    0.1        & 0.1          & 1.73    & -0.329      \\
+    0.1        & 0.2          & 0.60    & 0.144      \\
+    0.1        & 0.5          & -0.90  & 0.330      \\
+    0.1        & 0.75         & -1.9    & -0.054      \\
+    0.2        & 0.1          & 1.47    & -0.419      \\
+    0.2        & 0.2          & 1.21    & 0.308      \\
+    0.2        & 0.5          & -0.67   & 0.116      \\
+    0.2        & 0.75         & -2.12   & 0.026      \\
+    0.5        & 0.1          & 1.26    & -0.303     \\
+    0.5        & 0.2          & 0.75    & -0.585     \\
+    0.5        & 0.5          & -1.05   & -0.695     \\
+    0.5        & 0.75         & -0.86   & -0.347      \\
+    \end{tabular}
+    \caption{}
+    \label{tbl:19_errors}
+\end{table}
