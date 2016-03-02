@@ -57,9 +57,9 @@ $$H=(Q,X,Init,f,D,E,G,R)$$
   $D$ shows what conditions need to be satisfied in order for the automaton to
   stay in a state.
 
-  $D(q_1)=\{|\theta_g-\theta|>\delta\}$
+  $D(q_1)=\{(x,y,\theta): x,y \in \mathbb{R}^2, |\theta_g-\theta| > \delta\}$
 
-  $D(q_2)=\{(x_g-x)^2+(y_g-y)^2>\xi\}$
+  $D(q_2)=\{(x,y,\theta): x,y \in \mathbb{R}^2, (x_g-x)^2+(y_g-y)^2>\xi, \theta \in(-180^{\circ}, 180^{\circ}]\}$
 
   $D(q_3)= \{x,y \in \mathbb{R}^2, \theta \in(-180^{\circ}, 180^{\circ}] \}$
 
