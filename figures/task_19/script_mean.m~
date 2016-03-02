@@ -57,7 +57,7 @@ a = 0.2*(a_11(:,4) + a_21(:,4) + a_31(:,4) + a_41(:,4) + a_51(:,4));
 a_time = eval(['a_', int2str(max_id), int2str(1)]);
 plot(a_time(:,1),  a);
 grid;
-matlab2tikz('angle.tex');
+
 %figure
 %plotyy(d_time(:,1),1.7203 - d,  a_time(:,1), 102.4204 - a);
 %grid
