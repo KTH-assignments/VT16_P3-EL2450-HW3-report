@@ -23,8 +23,8 @@ combinations of values of the gains $K_{*}$. The goal was set to be node 1
 $N1(-0.37, 1.68)$, and the robot's initial pose was
 $(x_0, y_0, \theta_0) \equiv (0,0,0)$. Hence, the distance to the goal was
 $d_g = 1.7203$ meters and the angle to the goal $\theta^R = 102.42^{\circ}$. The
-distance and angle tolerance thresholds where taken to be $d_{th} = 2\text{ cm}$
-and $\theta_{th} = 2^{\circ}$ respectively.
+distance and angle tolerance thresholds where taken to be $\delta = 2\text{ cm}$
+and $\xi = 2^{\circ}$ respectively.
 
 Since the actual final pose is not defined deterministically, five simulations
 of each possible combination of settings for the aforementioned 4-tuple were
@@ -62,7 +62,7 @@ respectively.
 The combination of the two control components made it possible for the robot
 to move to any location inside the simulation environment. In particular, for
 the single goal considered here, the controller made it possible for the robot
-to approach node 1 within a radius of length $d_{th}$ (with one exception, when
+to approach node 1 within a radius of length $\delta$ (with one exception, when
 $(K_{\Psi}^R / K_{\Psi,max}^R, K_{\omega}^T / K_{\omega,max}^T) \equiv (0.2, 0.75)$)
 and with a bearing well within the $2^{\circ}$ upper threshold. The second
 component of the line-following controller was partly responsible for reducing
@@ -79,11 +79,11 @@ state decreases. What was not expected, though, was the temporary spikes into
 state \texttt{Stop} for all cases when $K_{\omega}^T / K_{\omega,max}^T = 0.75$.
 This makes sence, since that high a value for the gain of the translational
 part of the line-following controller makes the robot overshoot the goal. Its
-momentum is such that while it approaches the goal within $d_{th}$ m and its
+momentum is such that while it approaches the goal within $\delta$ m and its
 state transitions from \texttt{Translation} to \texttt{Stop}, it cannot physically
-stop and steps out of the circle with radius $d_{th}$, and thus its state goes back
+stop and steps out of the circle with radius $\delta$, and thus its state goes back
 to \texttt{Translation}. The duration the robot stays at state \texttt{Stop} is
-the duration of time it spends inside this virual circle with radius $d_{th}$.
+the duration of time it spends inside this virual circle with radius $\delta$.
 This time interval is observed to be unequal among all three cases, due to the
 fact that the robot travels forwards (part I of the line-following controller)
 and rotates (part II of the line-following controller) simultaneously.

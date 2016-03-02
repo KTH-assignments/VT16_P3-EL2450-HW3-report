@@ -1,0 +1,89 @@
+The hybrid controller is modelled formally by an 8-tuple
+$$H=(Q,X,Init,f,D,E,G,R)$$
+
+
+\begin{figure}[H]\centering
+  \scalebox{0.7}{\input{./figures/task_18/18.tex}}
+  \caption{The hybrid automaton that controls the navigation of the robot
+    from an initial state $(x_0, y_0, \theta_0)$ to a goal location $(x_g, y_g)$.}
+  \label{}
+\end{figure}
+
+\begin{itemize}
+
+\item
+  $Q \equiv \{q_1 ,q_2 ,q_3\}$ denotes the set of discrete states. The robot is in
+  state $q_1$ when executing a rotation, in state $q_2$ when executing
+  line-following, and in state $q_3$ when it has stopped.
+
+\item
+  $Init \equiv \{q_1\}$. The initial state is taken to be $q_1$.
+
+\item
+  $X \equiv \{(x,y,\theta): x,y \in \mathbb{R}^2, \theta \in(-180^{\circ}, 180^{\circ}] \}$
+  denotes the continuous states
+
+\item
+  Vector fields $f$
+
+  \begin{equation*}
+    f(q_1, X) =
+    \begin{bmatrix}
+      \dot{x} = R u_{\omega} cos\theta      \\
+      \dot{y} = R u_{\omega} sin\theta      \\
+      \dot{\theta} = \dfrac{R}{L} u_{\Psi}
+    \end{bmatrix}
+  \end{equation*}
+
+  \begin{equation*}
+    f(q_2, X) =
+    \begin{bmatrix}
+      \dot{x} = R u_{\omega} cos\theta      \\
+      \dot{y} = R u_{\omega} sin\theta      \\
+      \dot{\theta} = \dfrac{R}{L} u_{\Psi}
+    \end{bmatrix}
+  \end{equation*}
+
+  \begin{equation*}
+    f(q_2, X) =
+    \begin{bmatrix}
+      \dot{x} = 0       \\
+      \dot{y} = 0       \\
+      \dot{\theta} = 0
+    \end{bmatrix}
+  \end{equation*}
+
+\item
+  $D$ shows what conditions need to be satisfied in order for the automaton to
+  stay in a state.
+
+  $D(q_1)=\{|\theta_g-\theta|>\delta\}$
+
+  $D(q_2)=\{(x_g-x)^2+(y_g-y)^2>\xi\}$
+
+  $D(q_3)= \{x,y \in \mathbb{R}^2, \theta \in(-180^{\circ}, 180^{\circ}] \}$
+
+\item
+  $E$: The edges show which transitions are possible.
+
+  $E_1 = \{ q_1,q_2\}$
+
+  $E_2 = \{ q_2,q_3\}$
+
+  $E = E_1 \cup E_2$
+
+\item
+  $G$: The guards show under what conditions the system can transition from one to
+  another state.
+
+  $G(\{q_1,q_2\})=\{\theta_g-\theta\le \delta \}$
+
+  $G(\{q_2,q_3\})=\{(x_g-x)^2+(y_g-y)^2 \leq \xi\}$
+
+\item
+  $R$: Resets illustrate the values that the state takes when transitioning
+  between states.
+
+  $R=\{x,y,\Theta\}$
+
+\end{itemize}
