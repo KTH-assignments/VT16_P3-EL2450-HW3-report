@@ -1,3 +1,13 @@
+From what we can see in the continuous and discrete state trajectory plot in
+figure \ref{fig:05}, there is no zeno behaviour. There may be an infinite amount
+of state switches, but they do not happen in an finite amount of time. The
+zero-order-hold implemented in this system holds the current value until the
+next sampling time instant. Therefore, the system's reaction time is limited by
+the ZOH and therefore it can not exhibit zeno behaviour.
+
+$\dot{\theta}=R /Lu_\Psi$ is marginally stable, as it does not go to zero but
+as well not to instability.
+
 \begin{figure}[H]\centering
   \scalebox{0.9}{\input{./figures/task_5/5.tex}}
   \caption{}
