@@ -1,0 +1,34 @@
+The system dynamics can be discretized using the Euler forward method.
+With sampling time $T_s$, the derivatives can then be approximated by
+
+\begin{equation}
+	\frac{d}{dt}\chi(t) = \frac{q-1}{T_s}\chi(t)
+	\label{eq:04}
+\end{equation}
+
+Applying equation \ref{eq:04} to the continuous state-space equations gives
+
+\begin{align*}
+  \frac{q-1}{T_s}x(t) &=  R u_\omega(t)cos(\theta(t))	\\
+  \frac{q-1}{T_s}y(t) &=  R u_\omega(t)cos(\theta(t))	\\
+  \frac{q-1}{T_s}\theta(t) &=  \frac{R}{L}u_\psi(t)
+\end{align*}
+
+Multiplying both sides by $T_s$ together with some rearranging after letting
+the shift operator act upon the variables yields
+
+\begin{align*}
+  x(t+T_s) &= x(t)+ T_s R u_\omega(t)cos(\theta(t))	\\
+  y(t+T_s) &= y(t) + T_s R u_\omega(t)cos(\theta(t))	\\
+  \theta(t+T_s) &= \theta(t) + \frac{T_s R}{L}u_\psi(t)
+\end{align*}
+
+Letting $x[k], y[k], \theta[k]$ and  $u_\omega[k], u_\psi[k]$ denote the robot's
+states and the control input respectively at time $t = kT_s, k = 0,1,2...$, the
+discretized system can be written as
+
+\begin{align*}
+  x[k+1] &= x[k] + T_s R u_\omega[k]cos(\theta[k])	\\
+  y[k+1] &= y[k] + T_s R u_\omega[k]cos(\theta[k])	\\
+  \theta[k+1]  &= \theta[k] + \frac{T_s R}{L}u_\psi(t)
+\end{align*}

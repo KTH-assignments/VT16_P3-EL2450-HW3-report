@@ -14,13 +14,12 @@ approximative form for $d_p[k]$) this gain should be negative, simulations
 showed that the robot achieved lower levels of both displacemental and angular
 errors when considered positive\footnote{Analysis on Task 14 showed that
 $K_{\Psi,min}^T$ is considered negative}. For purposes of homogeneity we shall
-denote $K_{\Psi,max}^T = -K_{\Psi,min}^T$, so $K_{\Psi}^T = 0.5 K_{\Psi,max}^T$.
+denote $K_{\Psi,max}^T = -K_{\Psi,min}^T$, so $K_{\Psi}^T = 0.5 K_{\Psi,max}^T > 0$.
 
-Figures \ref{fig:19_1_distance} - \ref{fig:19_12_transitions} illustrate the
-evolution of the distance of the robot in relation to its goal, the angular
-error, and the discrete state trajectories, over time, for the aforementioned
-combinations of values of the gains $K_{*}$. The goal was set to be node 1
-$N1(-0.37, 1.68)$, and the robot's initial pose was
+Figures \ref{fig:19_1_angle} - \ref{fig:19_12_transitions} illustrate the
+evolution of the continuous and discrete state trajectories, over time, for the
+aforementioned combinations of values of the gains $K_{*}$. The goal was set to
+be node 1 $N1(-0.37, 1.68)$, and the robot's initial pose was
 $(x_0, y_0, \theta_0) \equiv (0,0,0)$. Hence, the distance to the goal was
 $d_g = 1.7203$ meters and the angle to the goal $\theta^R = 102.42^{\circ}$. The
 distance and angle tolerance thresholds where taken to be $\delta = 2\text{ cm}$
@@ -28,8 +27,8 @@ and $\xi = 2^{\circ}$ respectively.
 
 Since the actual final pose is not defined deterministically, five simulations
 of each possible combination of settings for the aforementioned 4-tuple were
-conducted. Hence, all the following figures express the mean steady-state
-positional and angular errors across five runs.
+conducted. Hence, all the following figures express the mean continuous and
+discrete state trajectories.
 
 Table \ref{tbl:19_errors} illustrates the steady-state errors $e_d$ and
 $e_{\theta}$ regarding the distance and the angle that the robot had to travel,
@@ -88,473 +87,244 @@ This time interval is observed to be unequal among all three cases, due to the
 fact that the robot travels forwards (part I of the line-following controller)
 and rotates (part II of the line-following controller) simultaneously.
 
-The following sections illustrate the displacemental and angular errors and
-the discrete state trajectory over time for different values of the four gains.
+Furthermore, we note that the robot does not start to translate immediately after
+the state switch to $q_2$.
 
 
-\subsection*{$\Bigg(
-  \dfrac{K_{\Psi}^R}{K_{\Psi,max}^R},
-  \dfrac{K_{\omega}^T}{K_{\omega,max}^T},
-  \dfrac{K_{\omega}^R}{K_{\omega,max}^R},
-  \dfrac{K_{\Psi}^T}{K_{\Psi,max}^T}\Bigg) \equiv (0.1, 0.1, 0.5, 0.5)$}
+\begin{figure}[ht]
+\begin{multicols}{2}
+\subfigure[The bearing of the robot over time for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$]{
+  \scalebox{0.6}{\input{./figures/task_19/1/angle.tex}}
+  \label{fig:19_1_angle}}
+\quad
+\subfigure[The distance of the robot to the origin over time for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$]{
+  \scalebox{0.6}{\input{./figures/task_19/1/dist.tex}}
+  \label{fig:19_1_distance}}
 
-\vfill
-\noindent\makebox[\textwidth][c]{%
-\begin{minipage}{\linewidth}
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]
-      \scalebox{0.6}{\input{./figures/task_19/1/dist.tex}}
-      \caption{The error in displacement of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$}
-      \label{fig:19_1_distance}
-    \end{figure}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]
-      \scalebox{0.6}{\input{./figures/task_19/1/angle.tex}}
-      \caption{The error in bearing of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$}
-      \label{fig:19_1_angle}
-    \end{figure}
-  \end{minipage}
-\end{minipage}
-}
-\vfill
-\begin{figure}[H]\centering
+\subfigure[The discrete state trajectory for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$.
+  1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}]{
   \scalebox{0.6}{\input{./figures/task_19/1/transitions.tex}}
-  \caption{The discrete state trajectory for
-    $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$.
-    1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}}
-  \label{fig:19_1_transitions}
-\end{figure}
-\vfill
+  \label{fig:19_1_transitions}}
+\quad
+\subfigure[The bearing of the robot in over time for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$]{
+  \scalebox{0.6}{\input{./figures/task_19/2/angle.tex}}
+  \label{fig:19_2_angle}}
 
-
-\subsection*{$\Bigg(
-  \dfrac{K_{\Psi}^R}{K_{\Psi,max}^R},
-  \dfrac{K_{\omega}^T}{K_{\omega,max}^T},
-  \dfrac{K_{\omega}^R}{K_{\omega,max}^R},
-  \dfrac{K_{\Psi}^T}{K_{\Psi,max}^T}\Bigg) \equiv (0.1, 0.2, 0.5, 0.5)$}
-
-\vfill
-\noindent\makebox[\textwidth][c]{%
-\begin{minipage}{\linewidth}
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]
-      \scalebox{0.6}{\input{./figures/task_19/2/dist.tex}}
-      \caption{The error in displacement of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$}
-      \label{fig:19_2_distance}
-    \end{figure}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]
-      \scalebox{0.6}{\input{./figures/task_19/2/angle.tex}}
-      \caption{The error in bearing of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$}
-      \label{fig:19_2_angle}
-    \end{figure}
-  \end{minipage}
-\end{minipage}
-}
-\vfill
-\begin{figure}[H]\centering
+\subfigure[The distance of the robot to the origin over time for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$]{
+  \scalebox{0.6}{\input{./figures/task_19/2/dist.tex}}
+  \label{fig:19_2_distance}}
+\quad
+\subfigure[The discrete state trajectory for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$.
+  1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}]{
   \scalebox{0.6}{\input{./figures/task_19/2/transitions.tex}}
-  \caption{The discrete state trajectory for
-    $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$.
-    1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}}
-  \label{fig:19_2_transitions}
+  \label{fig:19_2_transitions}}
+
+\end{multicols}
+\caption{}
+\label{multifig:19_1}
 \end{figure}
-\vfill
 
+\begin{figure}[ht]
+\begin{multicols}{2}
+\subfigure[The bearing of the robot over time for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$]{
+  \scalebox{0.6}{\input{./figures/task_19/3/angle.tex}}
+  \label{fig:19_3_angle}}
+\quad
+\subfigure[The distance of the robot to the origin over time for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$]{
+  \scalebox{0.6}{\input{./figures/task_19/3/dist.tex}}
+  \label{fig:19_3_distance}}
 
-\subsection*{$\Bigg(
-  \dfrac{K_{\Psi}^R}{K_{\Psi,max}^R},
-  \dfrac{K_{\omega}^T}{K_{\omega,max}^T},
-  \dfrac{K_{\omega}^R}{K_{\omega,max}^R},
-  \dfrac{K_{\Psi}^T}{K_{\Psi,max}^T}\Bigg) \equiv (0.1, 0.5, 0.5, 0.5)$}
-
-\vfill
-\noindent\makebox[\textwidth][c]{%
-\begin{minipage}{\linewidth}
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]
-      \scalebox{0.6}{\input{./figures/task_19/3/dist.tex}}
-      \caption{The error in displacement of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$}
-      \label{fig:19_3_distance}
-    \end{figure}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]
-      \scalebox{0.6}{\input{./figures/task_19/3/angle.tex}}
-      \caption{The error in bearing of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$}
-      \label{fig:19_3_angle}
-    \end{figure}
-  \end{minipage}
-\end{minipage}
-}
-\vfill
-\begin{figure}[H]\centering
+\subfigure[The discrete state trajectory for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$.
+  1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}]{
   \scalebox{0.6}{\input{./figures/task_19/3/transitions.tex}}
-  \caption{The discrete state trajectory for
-    $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$.
-    1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}}
-  \label{fig:19_3_transitions}
-\end{figure}
-\vfill
+  \label{fig:19_3_transitions}}
+\quad
+\subfigure[The bearing of the robot in over time for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$]{
+  \scalebox{0.6}{\input{./figures/task_19/4/angle.tex}}
+  \label{fig:19_4_angle}}
 
-
-\subsection*{$\Bigg(
-  \dfrac{K_{\Psi}^R}{K_{\Psi,max}^R},
-  \dfrac{K_{\omega}^T}{K_{\omega,max}^T},
-  \dfrac{K_{\omega}^R}{K_{\omega,max}^R},
-  \dfrac{K_{\Psi}^T}{K_{\Psi,max}^T}\Bigg) \equiv (0.1, 0.75, 0.5, 0.5)$}
-
-\vfill
-\noindent\makebox[\textwidth][c]{%
-\begin{minipage}{\linewidth}
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]
-      \scalebox{0.6}{\input{./figures/task_19/4/dist.tex}}
-      \caption{The error in displacement of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$}
-      \label{fig:19_4_distance}
-    \end{figure}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]
-      \scalebox{0.6}{\input{./figures/task_19/4/angle.tex}}
-      \caption{The error in bearing of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$}
-      \label{fig:19_4_angle}
-    \end{figure}
-  \end{minipage}
-\end{minipage}
-}
-\vfill
-\begin{figure}[H]\centering
+\subfigure[The distance of the robot to the origin over time for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$]{
+  \scalebox{0.6}{\input{./figures/task_19/4/dist.tex}}
+  \label{fig:19_4_distance}}
+\quad
+\subfigure[The discrete state trajectory for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$.
+  1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}]{
   \scalebox{0.6}{\input{./figures/task_19/4/transitions.tex}}
-  \caption{The discrete state trajectory for
-    $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$.
-    1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}}
-  \label{fig:19_4_transitions}
+  \label{fig:19_4_transitions}}
+
+\end{multicols}
+\caption{}
+\label{multifig:19_2}
 \end{figure}
-\vfill
 
 
-\subsection*{$\Bigg(
-  \dfrac{K_{\Psi}^R}{K_{\Psi,max}^R},
-  \dfrac{K_{\omega}^T}{K_{\omega,max}^T},
-  \dfrac{K_{\omega}^R}{K_{\omega,max}^R},
-  \dfrac{K_{\Psi}^T}{K_{\Psi,max}^T}\Bigg) \equiv (0.2, 0.1, 0.5, 0.5)$}
 
-\vfill
-\noindent\makebox[\textwidth][c]{%
-\begin{minipage}{\linewidth}
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]
-      \scalebox{0.6}{\input{./figures/task_19/5/dist.tex}}
-      \caption{The error in displacement of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$}
-      \label{fig:19_5_distance}
-    \end{figure}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]
-      \scalebox{0.6}{\input{./figures/task_19/5/angle.tex}}
-      \caption{The error in bearing of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$}
-      \label{fig:19_5_angle}
-    \end{figure}
-  \end{minipage}
-\end{minipage}
-}
-\vfill
-\begin{figure}[H]\centering
+\begin{figure}[ht]
+\begin{multicols}{2}
+\subfigure[The bearing of the robot over time for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$]{
+  \scalebox{0.6}{\input{./figures/task_19/5/angle.tex}}
+  \label{fig:19_5_angle}}
+\quad
+\subfigure[The distance of the robot to the origin over time for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$]{
+  \scalebox{0.6}{\input{./figures/task_19/5/dist.tex}}
+  \label{fig:19_5_distance}}
+
+\subfigure[The discrete state trajectory for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$.
+  1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}]{
   \scalebox{0.6}{\input{./figures/task_19/5/transitions.tex}}
-  \caption{The discrete state trajectory for
-    $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.1 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$.
-  1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}}
-  \label{fig:19_5_transitions}
-\end{figure}
-\vfill
+  \label{fig:19_5_transitions}}
+\quad
+\subfigure[The bearing of the robot in over time for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$]{
+  \scalebox{0.6}{\input{./figures/task_19/6/angle.tex}}
+  \label{fig:19_6_angle}}
 
-
-\subsection*{$\Bigg(
-  \dfrac{K_{\Psi}^R}{K_{\Psi,max}^R},
-  \dfrac{K_{\omega}^T}{K_{\omega,max}^T},
-  \dfrac{K_{\omega}^R}{K_{\omega,max}^R},
-  \dfrac{K_{\Psi}^T}{K_{\Psi,max}^T}\Bigg) \equiv (0.2, 0.2, 0.5, 0.5)$}
-
-\vfill
-\noindent\makebox[\textwidth][c]{%
-\begin{minipage}{\linewidth}
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]
-      \scalebox{0.6}{\input{./figures/task_19/6/dist.tex}}
-      \caption{The error in displacement of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$}
-      \label{fig:19_6_distance}
-    \end{figure}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]
-      \scalebox{0.6}{\input{./figures/task_19/6/angle.tex}}
-      \caption{The error in bearing of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$}
-      \label{fig:19_6_angle}
-    \end{figure}
-  \end{minipage}
-\end{minipage}
-}
-\vfill
-\begin{figure}[H]\centering
+\subfigure[The distance of the robot to the origin over time for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$]{
+  \scalebox{0.6}{\input{./figures/task_19/6/dist.tex}}
+  \label{fig:19_6_distance}}
+\quad
+\subfigure[The discrete state trajectory for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$.
+  1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}]{
   \scalebox{0.6}{\input{./figures/task_19/6/transitions.tex}}
-  \caption{The discrete state trajectory for
-    $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$.
-    1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}}
-  \label{fig:19_6_transitions}
+  \label{fig:19_6_transitions}}
+
+\end{multicols}
+\caption{}
+\label{multifig:19_3}
 \end{figure}
-\vfill
 
+\begin{figure}[ht]
+\begin{multicols}{2}
+\subfigure[The bearing of the robot over time for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$]{
+  \scalebox{0.6}{\input{./figures/task_19/7/angle.tex}}
+  \label{fig:19_7_angle}}
+\quad
+\subfigure[The distance of the robot to the origin over time for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$]{
+  \scalebox{0.6}{\input{./figures/task_19/7/dist.tex}}
+  \label{fig:19_7_distance}}
 
-\subsection*{$\Bigg(
-  \dfrac{K_{\Psi}^R}{K_{\Psi,max}^R},
-  \dfrac{K_{\omega}^T}{K_{\omega,max}^T},
-  \dfrac{K_{\omega}^R}{K_{\omega,max}^R},
-  \dfrac{K_{\Psi}^T}{K_{\Psi,max}^T}\Bigg) \equiv (0.2, 0.5, 0.5, 0.5)$}
-
-\vfill
-\noindent\makebox[\textwidth][c]{%
-\begin{minipage}{\linewidth}
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]
-      \scalebox{0.6}{\input{./figures/task_19/7/dist.tex}}
-      \caption{The error in displacement of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$}
-      \label{fig:19_7_distance}
-    \end{figure}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]
-      \scalebox{0.6}{\input{./figures/task_19/7/angle.tex}}
-      \caption{The error in bearing of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$}
-      \label{fig:19_7_angle}
-    \end{figure}
-  \end{minipage}
-\end{minipage}
-}
-\vfill
-\begin{figure}[H]\centering
+\subfigure[The discrete state trajectory for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$.
+  1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}]{
   \scalebox{0.6}{\input{./figures/task_19/7/transitions.tex}}
-  \caption{The discrete state trajectory for
-    $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$.
-    1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}}
-  \label{fig:19_7_transitions}
-\end{figure}
-\vfill
+  \label{fig:19_7_transitions}}
+\quad
+\subfigure[The bearing of the robot in over time for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$]{
+  \scalebox{0.6}{\input{./figures/task_19/8/angle.tex}}
+  \label{fig:19_8_angle}}
 
-
-\subsection*{$\Bigg(
-  \dfrac{K_{\Psi}^R}{K_{\Psi,max}^R},
-  \dfrac{K_{\omega}^T}{K_{\omega,max}^T},
-  \dfrac{K_{\omega}^R}{K_{\omega,max}^R},
-  \dfrac{K_{\Psi}^T}{K_{\Psi,max}^T}\Bigg) \equiv (0.2, 0.75, 0.5, 0.5)$}
-
-\vfill
-\noindent\makebox[\textwidth][c]{%
-\begin{minipage}{\linewidth}
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]
-      \scalebox{0.6}{\input{./figures/task_19/8/dist.tex}}
-      \caption{The error in displacement of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$}
-      \label{fig:19_8_distance}
-    \end{figure}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]
-      \scalebox{0.6}{\input{./figures/task_19/8/angle.tex}}
-      \caption{The error in bearing of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$}
-      \label{fig:19_8_angle}
-    \end{figure}
-  \end{minipage}
-\end{minipage}
-}
-\vfill
-\begin{figure}[H]\centering
+\subfigure[The distance of the robot to the origin over time for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$]{
+  \scalebox{0.6}{\input{./figures/task_19/8/dist.tex}}
+  \label{fig:19_8_distance}}
+\quad
+\subfigure[The discrete state trajectory for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$.
+  1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}]{
   \scalebox{0.6}{\input{./figures/task_19/8/transitions.tex}}
-  \caption{The discrete state trajectory for
-    $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.2 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$.
-    1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}}
-  \label{fig:19_8_transitions}
+  \label{fig:19_8_transitions}}
+
+\end{multicols}
+\caption{}
+\label{multifig:19_4}
 \end{figure}
-\vfill
 
 
-\subsection*{$\Bigg(
-  \dfrac{K_{\Psi}^R}{K_{\Psi,max}^R},
-  \dfrac{K_{\omega}^T}{K_{\omega,max}^T},
-  \dfrac{K_{\omega}^R}{K_{\omega,max}^R},
-  \dfrac{K_{\Psi}^T}{K_{\Psi,max}^T}\Bigg) \equiv (0.5, 0.1, 0.5, 0.5)$}
 
-\vfill
-\noindent\makebox[\textwidth][c]{%
-\begin{minipage}{\linewidth}
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]
-      \scalebox{0.6}{\input{./figures/task_19/9/dist.tex}}
-      \caption{The error in displacement of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$}
-      \label{fig:19_9_distance}
-    \end{figure}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]
-      \scalebox{0.6}{\input{./figures/task_19/9/angle.tex}}
-      \caption{The error in bearing of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$}
-      \label{fig:19_9_angle}
-    \end{figure}
-  \end{minipage}
-\end{minipage}
-}
-\vfill
-\begin{figure}[H]\centering
+\begin{figure}[ht]
+\begin{multicols}{2}
+\subfigure[The bearing of the robot over time for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$]{
+  \scalebox{0.6}{\input{./figures/task_19/9/angle.tex}}
+  \label{fig:19_9_angle}}
+\quad
+\subfigure[The distance of the robot to the origin over time for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$]{
+  \scalebox{0.6}{\input{./figures/task_19/9/dist.tex}}
+  \label{fig:19_9_distance}}
+
+\subfigure[The discrete state trajectory for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$.
+  1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}]{
   \scalebox{0.6}{\input{./figures/task_19/9/transitions.tex}}
-  \caption{The discrete state trajectory for
-    $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.1 K_{\omega, max}^T)$.
-  1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}}
-  \label{fig:19_9_transitions}
-\end{figure}
-\vfill
+  \label{fig:19_9_transitions}}
+\quad
+\subfigure[The bearing of the robot in over time for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$]{
+  \scalebox{0.6}{\input{./figures/task_19/10/angle.tex}}
+  \label{fig:19_10_angle}}
 
-
-\subsection*{$\Bigg(
-  \dfrac{K_{\Psi}^R}{K_{\Psi,max}^R},
-  \dfrac{K_{\omega}^T}{K_{\omega,max}^T},
-  \dfrac{K_{\omega}^R}{K_{\omega,max}^R},
-  \dfrac{K_{\Psi}^T}{K_{\Psi,max}^T}\Bigg) \equiv (0.5, 0.2, 0.5, 0.5)$}
-
-\vfill
-\noindent\makebox[\textwidth][c]{%
-\begin{minipage}{\linewidth}
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]
-      \scalebox{0.6}{\input{./figures/task_19/10/dist.tex}}
-      \caption{The error in displacement of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$}
-      \label{fig:19_10_distance}
-    \end{figure}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]
-      \scalebox{0.6}{\input{./figures/task_19/10/angle.tex}}
-      \caption{The error in bearing of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$}
-      \label{fig:19_10_angle}
-    \end{figure}
-  \end{minipage}
-\end{minipage}
-}
-\vfill
-\begin{figure}[H]\centering
+\subfigure[The distance of the robot to the origin over time for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$]{
+  \scalebox{0.6}{\input{./figures/task_19/10/dist.tex}}
+  \label{fig:19_10_distance}}
+\quad
+\subfigure[The discrete state trajectory for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$.
+  1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}]{
   \scalebox{0.6}{\input{./figures/task_19/10/transitions.tex}}
-  \caption{The discrete state trajectory for
-    $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.2 K_{\omega, max}^T)$.
-    1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}}
-  \label{fig:19_10_transitions}
+  \label{fig:19_10_transitions}}
+
+\end{multicols}
+\caption{}
+\label{multifig:19_5}
 \end{figure}
-\vfill
 
+\begin{figure}[ht]
+\begin{multicols}{2}
+\subfigure[The bearing of the robot over time for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$]{
+  \scalebox{0.6}{\input{./figures/task_19/11/angle.tex}}
+  \label{fig:19_11_angle}}
+\quad
+\subfigure[The distance of the robot to the origin over time for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$]{
+  \scalebox{0.6}{\input{./figures/task_19/11/dist.tex}}
+  \label{fig:19_11_distance}}
 
-\subsection*{$\Bigg(
-  \dfrac{K_{\Psi}^R}{K_{\Psi,max}^R},
-  \dfrac{K_{\omega}^T}{K_{\omega,max}^T},
-  \dfrac{K_{\omega}^R}{K_{\omega,max}^R},
-  \dfrac{K_{\Psi}^T}{K_{\Psi,max}^T}\Bigg) \equiv (0.5, 0.5, 0.5, 0.5)$}
-
-\vfill
-\noindent\makebox[\textwidth][c]{%
-\begin{minipage}{\linewidth}
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]
-      \scalebox{0.6}{\input{./figures/task_19/11/dist.tex}}
-      \caption{The error in displacement of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$}
-      \label{fig:19_11_distance}
-    \end{figure}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]
-      \scalebox{0.6}{\input{./figures/task_19/11/angle.tex}}
-      \caption{The error in bearing of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$}
-      \label{fig:19_11_angle}
-    \end{figure}
-  \end{minipage}
-\end{minipage}
-}
-\vfill
-\begin{figure}[H]\centering
+\subfigure[The discrete state trajectory for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$.
+  1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}]{
   \scalebox{0.6}{\input{./figures/task_19/11/transitions.tex}}
-  \caption{The discrete state trajectory for
-    $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.5 K_{\omega, max}^T)$.
-    1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}}
-  \label{fig:19_11_transitions}
-\end{figure}
-\vfill
+  \label{fig:19_11_transitions}}
+\quad
+\subfigure[The bearing of the robot in over time for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$]{
+  \scalebox{0.6}{\input{./figures/task_19/12/angle.tex}}
+  \label{fig:19_12_angle}}
 
-
-\subsection*{$\Bigg(
-  \dfrac{K_{\Psi}^R}{K_{\Psi,max}^R},
-  \dfrac{K_{\omega}^T}{K_{\omega,max}^T},
-  \dfrac{K_{\omega}^R}{K_{\omega,max}^R},
-  \dfrac{K_{\Psi}^T}{K_{\Psi,max}^T}\Bigg) \equiv (0.5, 0.75, 0.5, 0.5)$}
-
-\vfill
-\noindent\makebox[\textwidth][c]{%
-\begin{minipage}{\linewidth}
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]
-      \scalebox{0.6}{\input{./figures/task_19/12/dist.tex}}
-      \caption{The error in displacement of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$}
-      \label{fig:19_12_distance}
-    \end{figure}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]
-      \scalebox{0.6}{\input{./figures/task_19/12/angle.tex}}
-      \caption{The error in bearing of the robot over time for
-        $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$}
-      \label{fig:19_12_angle}
-    \end{figure}
-  \end{minipage}
-\end{minipage}
-}
-\vfill
-\begin{figure}[H]\centering
+\subfigure[The distance of the robot to the origin over time for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$]{
+  \scalebox{0.6}{\input{./figures/task_19/12/dist.tex}}
+  \label{fig:19_12_distance}}
+\quad
+\subfigure[The discrete state trajectory for
+  $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$.
+  1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}]{
   \scalebox{0.6}{\input{./figures/task_19/12/transitions.tex}}
-  \caption{The discrete state trajectory for
-    $(K_{\Psi}^R, K_{\omega}^T) \equiv (0.5 K_{\Psi, max}^R, 0.75 K_{\omega, max}^T)$.
-    1 denotes \texttt{Rotation}, 2 denotes \texttt{Translation} and 3 denotes \texttt{Stop}}
-  \label{fig:19_12_transitions}
+  \label{fig:19_12_transitions}}
+
+\end{multicols}
+\caption{}
+\label{multifig:19_6}
 \end{figure}
-\vfill

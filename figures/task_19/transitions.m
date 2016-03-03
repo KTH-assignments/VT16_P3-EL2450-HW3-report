@@ -1,7 +1,7 @@
 clear;
 close all;
 
-p_1 = dlmread('1why.csv', ';', 1, 0);
+p_1 = dlmread('5.csv', ';', 1, 0);
 
 nz = find(p_1(:,4));
 p_1 = p_1(nz-1:end,:);
@@ -21,4 +21,4 @@ figure
 plot(p_1(:,1), tr_2 + tr_1 + 1);
 axis([0 p_1(end,1) 0.8 3.2])
 
-matlab2tikz('transitions.tex')
+%matlab2tikz('transitions.tex')
