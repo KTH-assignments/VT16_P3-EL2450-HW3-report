@@ -1,0 +1,46 @@
+On the basis of the continuous state equations for translation.
+
+\begin{equation}
+\begin{array}{ccc}
+  \dot{x} = R\:u_{\omega}\:cos\theta \\
+
+  \dot{y} = R\:u_{\omega}\:sin\theta
+\end{array}
+\end{equation}
+
+
+Since the robot itself uses centimeters as reference distance unit, the  given
+200 value for the speed turns to be: $u_{\omega} = 2\,[m/s]$. Furthermore,
+assuming:
+
+ \begin{enumerate}
+ \item $ \dot{x} = \frac{\Delta x}{\Delta t}$
+ \item $ \dot{y} = \frac{\Delta y}{\Delta t}$
+ \item $\Delta x = x_{f} - x_{o};\ \Delta y = y_{f} - y_{o}\ \Delta t = t_{f} - t_{o}$
+ \end{enumerate}
+
+ and multiplying each term of (1) by itself and adding them toghether,
+ one gets the following equation  that can be solved with values of the
+ variations in position coordinates and time, plus the above mentioned value of
+ the speed.
+
+\begin{equation*}
+ \left.
+  \begin{array}{ll}
+    R &= \sqrt{\dfrac{1}{u_{\omega}^{2}}\:\left[ \left( \dfrac{\Delta x}{\Delta t}\right)^2 + \:\left( \dfrac{\Delta y}{\Delta t}\right)^2 \right]} \\
+    \Delta x &= \;1.3\:[m] \\
+    \Delta y &=\;-0.07\:[m] \\
+    \Delta t &=\;6.4250\:[s] \\
+    u_{\omega} &=\;2\,[m/s] \\
+\end{array}
+\right\}\:R = 0.1013
+ \end{equation*} \\
+
+For the calculation of L, the equation for the robot pose is used.
+$$\dot{\theta} = \dfrac{R}{L}\,u_{\Psi}$$
+
+As earlier, we have considered $\dot{\theta} = \dfrac{\Delta \theta}{\Delta t}$.
+From file \texttt{Rotation.cvs}, created for $u_{\Psi} = 400\,[cm/s]$ one gets
+$\Delta\theta = 150.27^{\circ}$ , $\Delta t = 4.1667\,[s]$. Hence:
+
+$$L = \dfrac{\Delta t}{\Delta \theta}\,R\,u_{\Psi} = 0.5113$$

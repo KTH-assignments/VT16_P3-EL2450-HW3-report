@@ -1,0 +1,47 @@
+close all;
+clear;
+
+p = dlmread('7.csv', ';', 1, 0);
+
+% Plot distance
+
+t0 = p(1,1);
+p(:,1) = (p(:,1) - t0) * 10^(-6);
+
+
+t = p(:,1);
+x = p(:,2); 
+y = p(:,3);
+a = p(:,4);
+
+
+plot(x,y);
+hold on
+
+m=[
+    -0.37, 1.68; 
+    1.09, 1.68; 
+    2.55, 1.68; 
+    -0.37, 0.23; 
+    1.09, 0.23; 
+    2.55, 0.23;
+    -0.37, -1.22; 
+    1.09, -1.22; 
+    2.55, -1.22];
+
+plot(m(:,1), m(:,2), 'b*')
+axis([-0.85 3 -1.8 2])
+%grid
+
+offset = 0.1;
+
+
+text(m(1,1)-0.05, m(1,2)-offset, '1');
+text(m(2,1)-0.05, m(2,2)-offset, '2');
+text(m(3,1)-0.05, m(3,2)-offset, '3');
+text(m(4,1)-offset, m(4,2)-offset, '4');
+text(m(5,1)-offset, m(5,2)-offset, '5');
+text(m(6,1)-offset, m(6,2)-offset, '6');
+text(m(7,1)-offset, m(7,2)-offset, '7');
+text(m(8,1)-offset, m(8,2)-offset, '8');
+text(m(9,1)-offset, m(9,2)-offset, '9');
