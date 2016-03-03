@@ -38,3 +38,18 @@ overshoot, but close enough to it, so that convergence happens in reasonable
 time. Hence, in practice, it is reasonable that one would need to experiment
 with different values and choose one that results in balancing a small angular
 error, a minimal overshoot, if any, and a quick enough settling time.
+
+On another note, for a first order system, the dead-beat controller brings the
+system to steady state in one single step, provided that the system can be
+brought to zero by some input. Hence the dead-beat controller is a good choice
+regarding speed and convergence. As one can see from equation \ref{eq:7.2}, the
+error $\theta[k+1] - \theta^R$ will go to zero in one single step if $K_\psi ^R$
+is set to
+
+\begin{equation*}
+K_\psi ^R = \frac{L}{T_s R} = \frac{1}{2}K_{\psi,max}^R
+\end{equation*}
+
+i.e. we can design a dead-beat controller using this value. However there might
+be some issues when using this controller in practice and it therefore needs to
+be tested experimentally.
