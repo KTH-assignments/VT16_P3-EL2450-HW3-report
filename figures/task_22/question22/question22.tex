@@ -1,0 +1,38 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{epstopdf}
+
+%\usepackage{Fourier}
+%\usepackage{mathtools}
+
+
+\begin{document}
+After adjusting gain values based on real test results at the lab, the selected values are:\\\\
+$K_{\omega} =0.2\:K_{\omega,max}$  and, $ K_{\Psi} = 0.2\:K_{\Psi,max} $ \\
+
+The original values were delivering very short settling times while large
+positioning errors. The last effect was due to the high requirements of speed
+from the translational controller part, that led $u_{l}$ and $u_{r}$ to their
+upper threshold, as commented in question 19.
+
+In the figure ?? the distance with respect to the goal is plotted. There, one
+can observe the trade-off  between speed and offset. The positioning error is
+around 7 centimeters, which is a well acceptable value for a displacement of
+more than 2 meters. \\
+
+%Dont forget to plot the shitty figure!
+
+In the figure ??+1 the bearing error is plotted. Comparing both figures it can
+be seen how the translational motion starts whenever the rotational error is
+smaller than certain value, prevoiusly defined and adjusted. As well, one can
+observe how the line follower part of the controller acts over the bearing so
+to correct the error in heading. The final error is bounded inside 2 degrees,
+which can be considered as a quite good result.
+
+%The time scale is shifted so that 0 corresponds to the moment where the robot starts to turn.
+
+
+\end{document}

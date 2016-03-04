@@ -11,8 +11,16 @@ $$(\dfrac{K_{\Psi}^R}{K_{\Psi,max}^R}, \dfrac{K_{\omega}^T}{K_{\omega, max}^T}, 
 \equiv (0.2, 0.2, 0.5, 0.5)$$
 where $K_{*,max} > 0$.
 
-The robot's distance errors from nodes 1, 5 and 3 were $e_1 = 7.42$ cm,
-$e_5 = 7.07$ cm and $e_1 = 8.54$ cm and respectively.
+\begin{figure}\centering
+  \scalebox{1}{\input{./figures/task_22/map_7.tex}}
+  \caption{The trajectory of the robot in real-life conditions. The anglular
+    tolerance was set to $\xi = 4^{\circ}$ and the distance tolerance to
+    $\delta$ = 6 cm. Direction of travel is counter-clockwise, starting from node 2.}
+  \label{fig:22_map_7}
+\end{figure}
+
+The robot's distance errors from nodes 1, 5 and 3 were $e_1 = 8.94$ cm,
+$e_5 = 6.40$ cm and $e_1 = 6.32$ cm and respectively.
 
 It wasn't before this experiment that we considered a
 positive $K_{\omega}^T$, instead of a negative one, as the theoretical analysis
@@ -25,10 +33,118 @@ line-following, and not rotation. The augmented error in distance,
 relative to the other two, is hence the fact that $K_{\omega}^T < 0$ during the
 experimental phase.
 
+Figure \ref{fig:22_map_7_xyt} illustrates the evolution of the position of the
+robot over time.
+
 \begin{figure}[H]\centering
-  \scalebox{1}{\input{./figures/task_22/map_7.tex}}
-  \caption{The trajectory of the robot in real-life conditions. The anglular
-    tolerance was set to $\xi = 4^{\circ}$ and the distance tolerance to
-    $\delta$ = 6 cm. Direction of travel is counter-clockwise, starting from node 2.}
-  \label{fig:22_map_7}
+  \scalebox{0.7}{\input{./figures/task_22/map_7_3d_xyt.tex}}
+  \caption{The evolution of the robot's position over time. The vertical axis
+    denotes time units in seconds.}
+  \label{fig:22_map_7_xyt}
 \end{figure}
+
+Figure \ref{fig:22_dist} plots the the distance of the robot from the origin
+$O(0,0)$ over time for the duration of this experiment. Figures
+\ref{fig:22_dist_error_2_1}, \ref{fig:22_dist_error_1_5}, and
+\ref{fig:22_dist_error_5_3} illustrate the evolution of the error in the
+robot's distance to each of its three goals.
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_22/e_dist.tex}}
+      \caption{The robot's distance to the origin over time.}
+      \label{fig:22_dist}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_22/e_dist01_2_1.tex}}
+      \caption{The robot travels from node 2 to node 1. Its steady-state
+        distance error is $8.94$ cm.}
+      \label{fig:22_dist_error_2_1}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_22/e_dist02_1_5.tex}}
+      \caption{The robot travels from node 1 to node 5. Its steady-state
+        distance error is $6.40$ cm.}
+      \label{fig:22_dist_error_1_5}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_22/e_dist03_5_3.tex}}
+      \caption{The robot travels from node 5 to node 3. Its steady-state
+        distance error is $6.32$ cm.}
+      \label{fig:22_dist_error_5_3}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+
+Figure \ref{fig:22_angle} plots the bearing of the robot over time for the
+duration of this experiment. Figures
+\ref{fig:22_angle_error_2_1}, \ref{fig:22_angle_error_1_5}, and
+\ref{fig:22_angle_error_5_3} illustrate the evolution of the error in the
+robot's orientation towards a goal.
+
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_22/e_angle.tex}}
+      \caption{The robot's bearing over the duration of the experiment.}
+      \label{fig:22_angle}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_22/e_angle01_2_1.tex}}
+      \caption{The robot travels from node 2 to node 1. Its steady-state
+        bearing error towards its goal orientation is $3.43^{\circ}$.}
+      \label{fig:22_angle_error_2_1}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_22/e_angle02_1_5.tex}}
+      \caption{The robot travels from node 1 to node 5. Its steady-state
+        bearing error towards its goal orientation is $2.14^{\circ}$.}
+      \label{fig:22_angle_error_1_5}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \scalebox{0.6}{\input{./figures/task_22/e_angle03_5_3.tex}}
+      \caption{The robot travels from node 5 to node 3. Its steady-state
+        bearing error towards its goal orientation is $0.017^{\circ}$.}
+      \label{fig:22_angle_error_5_3}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+Qualitatively, these experimental results are consistent with the
+simulations performed that preceded it, given the fact that theoretical and
+practical results will never coincide exactly quantitatively. All bearing errors
+are within the angular tolerance, while, the distance errors are close to the
+distance tolerance set, despite the fact that this experiment was conducted with
+a negative gain for the bearing correction component of the line-following
+controller.
