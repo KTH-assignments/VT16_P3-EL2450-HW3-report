@@ -78,14 +78,15 @@ state decreases. What was not expected, though, was the temporary spikes into
 state \texttt{Stop} for all cases when $K_{\omega}^T / K_{\omega,max}^T = 0.75$.
 This makes sense, since that high a value for the gain of the translational
 part of the line-following controller makes the robot overshoot the goal. Its
-momentum is such that while it approaches the goal within $\delta$ m and its
-state transitions from \texttt{Translation} to \texttt{Stop}, it cannot physically
-stop and steps out of the circle with radius $\delta$, and thus its state goes back
-to \texttt{Translation}. The duration the robot stays at state \texttt{Stop} is
-the duration of time it spends inside this virual circle with radius $\delta$.
-This time interval is observed to be unequal among all three cases, due to the
-fact that the robot travels forwards (part I of the line-following controller)
-and rotates (part II of the line-following controller) simultaneously.
+momentum is such that, while it approaches the goal within a distance of $\delta$
+and its state transitions from \texttt{Translation} to \texttt{Stop}, it cannot
+physically stop and steps out of the circle with radius $\delta$, and thus its
+state goes back to \texttt{Translation}. The duration the robot stays at state
+\texttt{Stop} is the duration of time it spends inside this virual circle with
+radius $\delta$.  This time interval is observed to be unequal among all three
+cases, due to the fact that the robot travels forwards (part I of the
+line-following controller) and rotates (part II of the line-following
+controller) simultaneously.
 
 Furthermore, we note that the robot does not start to translate immediately after
 the state switch to $q_2$.

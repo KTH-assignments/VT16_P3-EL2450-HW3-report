@@ -1,7 +1,7 @@
 Figure \ref{fig:22_map_7} plots the trajectory of the robot for an experiment
 performed at KTH's Smart Mobility Lab of the Automatic Control Department. The
-robot was initially placed in the vicinity of node 3. Its first goal was
-dictated to be node 5, and from there, nodes 1 and 2.
+robot was initially placed in the vicinity of node 2. Its first goal was
+dictated to be node 1, and from there, nodes 5 and 3.
 
 The robot's bearing and distance tolarance from a target was set to
 $\xi = 4^{\circ}$ and the distance tolerance to $\delta$ = 6 cm. The controller's
@@ -11,8 +11,18 @@ $$(\dfrac{K_{\Psi}^R}{K_{\Psi,max}^R}, \dfrac{K_{\omega}^T}{K_{\omega, max}^T}, 
 \equiv (0.2, 0.2, 0.5, 0.5)$$
 where $K_{*,max} > 0$.
 
-The robot's distance errors from nodes 5, 1 and 2 were $e_5 = 7.07$ cm,
-$e_1 = 8.54$ cm and $e_2 = 9.06$ cm respectively.
+The robot's distance errors from nodes 1, 5 and 3 were $e_1 = 7.42$ cm,
+$e_5 = 7.07$ cm and $e_1 = 8.54$ cm and respectively.
+
+It wasn't before this experiment that we considered a
+positive $K_{omega}^T$, instead of a negative one, as the theoretical analysis
+pointed to. The second component of the line-following controller showed
+significantly worse performance when $K_{omega}^T < 0$ than when $K_{omega}^T > 0$.
+
+When the robot was asked to go from node 2 to node 1, the angle between it and
+node 1 was $1.68^{\circ}$. The augmented error in distance, relative to the
+other two, is hence the fact that $K_{omega}^T < 0$ during the experimental
+phase.
 
 \begin{figure}[H]\centering
   \scalebox{1}{\input{./figures/task_22/map_7.tex}}
