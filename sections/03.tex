@@ -20,6 +20,88 @@ Practically, as one can see in \ref{fig:03}, the system is stable but it exhibit
 Zeno behaviour, which is defined as an infinite number of switches in finite
 time.
 
+A solution $\chi=(\tau,q,y)$ exhibits Zeno behaviour if
+
+\begin{equation}
+  \tau_\infty= \sum_{i=0}^\infty (\tau'-\tau)<\infty
+  \label{eq:03.zeno}
+\end{equation}
+
+whereas $\tau$ is the the time trajectory. As we can see from the automaton, if
+we start at $q_1$ we switch to $q_2$ from where we are immediately switched back
+and vice versa. So the system enters zeno behaviour as in the moment we enter 0 we
+are pushed back.
+
+\begin{figure}[H]\centering
+  \scalebox{1.4}{\input{./figures/task_3/3_automaton.tex}}
+  \caption{}
+  \label{fig:03_automaton}
+\end{figure}
+
+A formal way to look at this is the following: Without loss of generality,
+let us assume that at $t=0$ the angular subsystem is at $\theta = \theta_0^0$,
+that $\theta - \theta^G \leq 0$ and that $R/L = K = ct > 0$. Then:
+
+\begin{enumerate}
+    \item The system is in state $q_1$ for the first time and $\dot{\theta} = K$.
+      Which means that
+      $$\theta(t) = K t + \theta_0^0$$
+      The transition to state $q_2$ will happen when $\theta =\theta^G$, at time
+      $t = t_{1\rightarrow2}^1$, and at that time:
+      \begin{align}
+        \theta^G &= K t_{1\rightarrow2}^1 + \theta_0^0 \Leftrightarrow \nonumber \\
+        t_{1\rightarrow2}^1 &= \dfrac{\theta^G - \theta_0^0}{K} \label{eq:theta_1}
+      \end{align}
+
+    \item The time is $t_{1\rightarrow2}^1$ and the system is at state $q_2$. Here,
+      $\dot{\theta} = -K$ which means that
+      $$\theta(t) = -K t + \theta_0^1$$
+      and at this time instant
+      \begin{align*}
+        \theta^G &= -K t_{1\rightarrow2}^1 + \theta_0^1 \Leftrightarrow \\
+        \theta^G &= -K \dfrac{\theta^G - \theta_0^0}{K} + \theta_0^1 \Leftrightarrow \\
+        \theta^G &= -\theta^G + \theta_0^0 + \theta_0^1 \Leftrightarrow \\
+        \theta_0^1 &= 2\theta^G - \theta_0^0
+      \end{align*}
+
+
+      Hence
+      $$\theta = -K t + 2\theta_G - \theta_0^0$$
+      and at the time of the second switch, at $t_{2\rightarrow1}^1$ when $\theta = \theta^G$:
+
+      \begin{align}
+        \theta^G &= -K t_{2\rightarrow1}^1 + 2\theta^G - \theta_0^0 \Leftrightarrow \nonumber \\
+        K t_{2\rightarrow1}^1 &= \theta^G - \theta_0^0 \Leftrightarrow \nonumber \\
+        t_{2\rightarrow1}^1 &= \dfrac{\theta^G - \theta_0^0}{K} \label{eq:theta_2}
+      \end{align}
+
+      Comparing equations \ref{eq:theta_1} and \ref{eq:theta_2} we observe that
+      two switches must happen at the exact same time which is
+      $t = t_{1\rightarrow2}^1 = t_{2\rightarrow1}^1$. This fact implies that
+      the system might exhibit Zeno behaviour, however, we do not know whether
+      the behaviour of $\theta$ will be the same in the next round yet.
+      Continuing,
+
+    \item The time now is $t_{2\rightarrow1}^1$ and the system is at state $q_1$.
+      Here, $\dot{\theta} = K$ which means that
+      $$\theta(t) = K t + \theta_0^2$$
+      and at this time instant
+      \begin{align*}
+        \theta^G &= K t_{2\rightarrow1}^1 + \theta_0^2 \Leftrightarrow \\
+        \theta^G &= K \dfrac{\theta^G - \theta_0^0}{K} + \theta_0^2 \Leftrightarrow \\
+        \theta^G &= \theta^G - \theta_0^0 + \theta_0^2 \Leftrightarrow \\
+        \theta_0^2 &= \theta_0^0
+      \end{align*}
+
+      So, when going back to state $q_1$ again, this process starts from
+      the beginning.
+\end{enumerate}
+
+Hence, equation \ref{eq:03.zeno} converges, and an infinite amount of switches
+should happen at the same time. Ergo, the angular subsystem exhibits a chattering
+Zeno behaviour under this control law.
+
+
 \begin{figure}[H]\centering
   \scalebox{0.9}{\input{./figures/task_3/3.tex}}
   \caption{}

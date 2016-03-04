@@ -6,7 +6,7 @@ p = dlmread('7.csv', ';', 1, 0);
 % Plot distance
 [d, p_1] = distance(p);
 
-plot(d(:,1));
+plot(p_1(:,1), d(:,1));
 grid;
 %matlab2tikz('dist.tex');
 

@@ -1,0 +1,10 @@
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm, semithick]
+  \tikzstyle{every state}=[fill=none,draw=black,text=black]
+
+    \node[state]  (A)                  {\tiny{$q_1$}: \linebreak $\dot{\theta}=\frac{R}{L}$};
+    \node[state]  (B)   [right of=A]   {\tiny{$q_2$}: $\dot{\theta}=-\frac{R}{L}$};
+
+    \path (A) edge      [bend left,above] node  {\tiny{$\theta-\theta^G > 0$}} (B)
+          (B) edge			[bend left,below] node {\tiny{$\theta-\theta^G \leq 0$}} (A);
+
+\end{tikzpicture}

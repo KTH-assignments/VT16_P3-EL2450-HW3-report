@@ -1,5 +1,23 @@
+Figure \ref{fig:22_map_7} plots the trajectory of the robot for an experiment
+performed at KTH's Smart Mobility Lab of the Automatic Control Department. The
+robot was initially placed in the vicinity of node 3. Its first goal was
+dictated to be node 5, and from there, nodes 1 and 2.
+
+The robot's bearing and distance tolarance from a target was set to
+$\xi = 4^{\circ}$ and the distance tolerance to $\delta$ = 6 cm. The controller's
+gains were set to
+
+$$(\dfrac{K_{\Psi}^R}{K_{\Psi,max}^R}, \dfrac{K_{\omega}^T}{K_{\omega, max}^T}, \dfrac{K_{\omega}^R}{K_{\omega,max}^R}, \dfrac{K_{\Psi}^T}{K_{\Psi,max}^T})
+\equiv (0.2, 0.2, 0.5, 0.5)$$
+where $K_{*,max} > 0$.
+
+The robot's distance errors from nodes 5, 1 and 2 were $e_5 = 7.07$ cm,
+$e_1 = 8.54$ cm and $e_2 = 9.06$ cm respectively.
+
 \begin{figure}[H]\centering
   \scalebox{1}{\input{./figures/task_22/map_7.tex}}
-  \caption{}
+  \caption{The trajectory of the robot in real-life conditions. The anglular
+    tolerance was set to $\xi = 4^{\circ}$ and the distance tolerance to
+    $\delta$ = 6 cm. Direction of travel is clockwise, starting from node 3.}
   \label{fig:22_map_7}
 \end{figure}
