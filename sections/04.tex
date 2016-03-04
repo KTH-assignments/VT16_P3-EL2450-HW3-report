@@ -11,7 +11,7 @@ stable. We can verify this analytically:
   u_{\Psi} &= u_{\Psi}^R + \lambda e^{-K_L t}
 \end{align*}
 
-Where, from inspection of the parameters of the integrator, the initial
+where, from inspection of the parameters of the integrator, the initial
 condition is $\lambda = 1$. Hence
 \begin{equation}
   u_{\Psi}(t) = \left\{
@@ -50,13 +50,15 @@ $$V(0) = 0,\ V(x) > 0,\ \text{for all } x \neq 0\text{, and}$$
 
 Hence, from inequalities \ref{04.lambda_A} and \ref{04.lambda_B} we conclude
 that $\dot{V}(x) \leq 0$ for all $x$, meaning that the system is stable for all
-$\theta \in (-180^{\circ}, 180^{\circ}]$.
+$\theta \in (-180^{\circ}, 180^{\circ}]$. In practice, the plot of the
+continuous state trajectory in figure \ref{fig:04} suggests that this is the
+case.
 
-From what one can see in the continuous and discrete state trajectory plot in
-figure \ref{fig:04}, one can say that the system enters into zeno behaviour,
-even though the system is asymptotically stable as $\dot{\theta}=R /Lu_\Psi$
-goes to zero. So one can conclude that this control law is not practical as
-the discrete part enters zeno-behaviour.
+From what one can see in the discrete state trajectory plot in
+figure \ref{fig:04}, the time interval between two consecutive switches is
+constantly being reduced in size every time a switch happens. This means that
+the sum in equation \ref{eq:03.zeno} converges, and, hence, the angular system
+is verified to exhibit genuine Zeno behaviour.
 
 \begin{figure}[H]\centering
   \scalebox{0.9}{\input{./figures/task_4/4.tex}}

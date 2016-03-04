@@ -16,9 +16,9 @@ $$V(0) = 0,\ V(x) > 0,\ \text{for all } x \neq 0\text{, and}$$
 Hence $\dot{V}(x) \leq 0$ for all $x$, meaning that the system is stable for all
 $\theta \in (-180^{\circ}, 180^{\circ}]$.
 
-Practically, as one can see in \ref{fig:03}, the system is stable but it exhibits
-Zeno behaviour, which is defined as an infinite number of switches in finite
-time.
+Practically, as one can see in equation \ref{fig:03}, the system is stable but
+it exhibits Zeno behaviour, which is defined as an infinite number of switches
+in finite time.
 
 A solution $\chi=(\tau,q,y)$ exhibits Zeno behaviour if
 
@@ -27,10 +27,9 @@ A solution $\chi=(\tau,q,y)$ exhibits Zeno behaviour if
   \label{eq:03.zeno}
 \end{equation}
 
-whereas $\tau$ is the the time trajectory. As we can see from the automaton, if
-we start at $q_1$ we switch to $q_2$ from where we are immediately switched back
-and vice versa. So the system enters zeno behaviour as in the moment we enter 0 we
-are pushed back.
+whereas $\tau$ is the the time trajectory. As we can see from the automaton
+in figure \ref{fig:03_automaton}, if we start at $q_1$ we switch to $q_2$ from
+where we are immediately switched back and vice versa.
 
 \begin{figure}[H]\centering
   \scalebox{1.4}{\input{./figures/task_3/3_automaton.tex}}
@@ -66,7 +65,7 @@ that $\theta - \theta^G \leq 0$ and that $R/L = K = ct > 0$. Then:
 
 
       Hence
-      $$\theta = -K t + 2\theta_G - \theta_0^0$$
+      $$\theta(t) = -K t + 2\theta_G - \theta_0^0$$
       and at the time of the second switch, at $t_{2\rightarrow1}^1$ when $\theta = \theta^G$:
 
       \begin{align}
