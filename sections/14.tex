@@ -1,3 +1,5 @@
+From the definition of $d_p[k]$:
+
 \begin{align}
   d_p[k+1] &= p (\theta[k+1] - \theta_g) \label{eq:14.1}
 \end{align}
@@ -30,7 +32,8 @@ circle:
 \end{align}
 
 Hence, the maximum value $K_{\omega}^T$ can take for the system to be marginally
-stable is $K_{\omega,max}^T = 0$.
+stable is $K_{\omega,max}^T = 0$, and the minimum is
+$K_{\omega,min}^T = -\dfrac{L}{p T_s R}$.
 
 Theoretically, the value of $K_{\omega}^T$ can be chosen to be any value inside
 the interval defined in inequality \ref{eq:09.2}. However, first, it would be
@@ -42,4 +45,4 @@ error, a minimal overshoot, if any, and a quick enough settling time.
 
 Just like discussed before, the dead-beat controller is a good choice in order to
 get fast convergence. The dead-beat control is in this case obtained when
-$K_\psi ^T = \frac{L}{pT_s R} = \frac{1}{2}K_{\psi,max} ^T$.
+$K_\psi ^T = \frac{L}{pT_s R} = \frac{1}{2}K_{\psi,min} ^T$.

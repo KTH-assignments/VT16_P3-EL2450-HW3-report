@@ -15,19 +15,20 @@ The robot's distance errors from nodes 1, 5 and 3 were $e_1 = 7.42$ cm,
 $e_5 = 7.07$ cm and $e_1 = 8.54$ cm and respectively.
 
 It wasn't before this experiment that we considered a
-positive $K_{omega}^T$, instead of a negative one, as the theoretical analysis
+positive $K_{\omega}^T$, instead of a negative one, as the theoretical analysis
 pointed to. The second component of the line-following controller showed
-significantly worse performance when $K_{omega}^T < 0$ than when $K_{omega}^T > 0$.
+significantly worse performance when $K_{\omega}^T < 0$ than when $K_{\omega}^T > 0$.
 
 When the robot was asked to go from node 2 to node 1, the angle between it and
-node 1 was $1.68^{\circ}$. The augmented error in distance, relative to the
-other two, is hence the fact that $K_{omega}^T < 0$ during the experimental
-phase.
+node 1 was $1.68^{\circ} < \xi = 4^{\circ}$. Hence, the robot first executed
+line-following, and not rotation. The augmented error in distance,
+relative to the other two, is hence the fact that $K_{\omega}^T < 0$ during the
+experimental phase.
 
 \begin{figure}[H]\centering
   \scalebox{1}{\input{./figures/task_22/map_7.tex}}
   \caption{The trajectory of the robot in real-life conditions. The anglular
     tolerance was set to $\xi = 4^{\circ}$ and the distance tolerance to
-    $\delta$ = 6 cm. Direction of travel is clockwise, starting from node 3.}
+    $\delta$ = 6 cm. Direction of travel is counter-clockwise, starting from node 2.}
   \label{fig:22_map_7}
 \end{figure}
